@@ -1,0 +1,43 @@
+snippet d-rdy "Waits for DOM to be ready" b
+document.addEventListener('DOMContentLoaded', function() {
+	$0
+});
+endsnippet
+
+snippet d-qs "Selects element from document" 
+document.querySelector(${1:#id?})
+endsnippet
+
+snippet f "Anonymous function" w
+function($1) {
+	$0
+}
+endsnippet
+
+snippet v "variable snippet" b
+var ${1} = $0;
+endsnippet
+
+snippet fn "Named function" 
+function ${1:name}($2) {
+	$0
+}
+endsnippet
+
+snippet r "return statement" b
+return $0;
+endsnippet
+
+snippet http "require http (for node)" b
+var http = require('http');
+$0
+endsnippet
+
+snippet req "snippet for requiring modules" b
+var $1 = require('$1');
+$0
+endsnippet
+
+snippet args "node arguments" 
+process.argv[$1]
+endsnippet

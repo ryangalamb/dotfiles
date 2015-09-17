@@ -1,0 +1,28 @@
+# Let there be color!
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# basic ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Compile less files when in top directory of a project.
+alias lsc='lessc ./less/style.less ./css/style.css'
+
+# Yes, I am exactly this lazy.
+alias supd='sudo apt-get update'
+alias inst='sudo apt-get install'
+alias c='clear'
+
+# Sure, why not?
+alias please='sudo'
+
+# Check battery status.
+alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "state|to\ full|percentage"'
+
+# Set dual screen on my laptop.
+alias 2scrn='xrandr --output HDMI1 --auto --right-of eDP1'
+# TODO: Make an alias to return to single screen.
