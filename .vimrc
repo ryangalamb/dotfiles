@@ -64,7 +64,7 @@ Plug 'kien/ctrlp.vim' " LEARN HOW TO HARNESS ITS GLORY
 " Code snippets. Pretty useful
 Plug 'SirVer/ultisnips' 
 " RETROSPECT: INSANELY USEFUL. The snippets are easy to define and
-" ridiculously flexible. It's well documented, and you can start getting
+" ridiculously flexible. It's well-documented, and you can start seeing the
 " benefits from it with very little effort. But if you know Python and are
 " willing to experiment a bit, there's some insane stuff you can do with it.
 " 
@@ -116,6 +116,12 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'less']  }
 
 " Elm language support
 Plug 'elmcast/elm-vim', { 'for': 'elm' }
+
+" dat tmux tho
+Plug 'christoomey/vim-tmux-navigator'
+
+" Records vim sessions
+Plug 'tpope/vim-obsession'
 
 " All of your Plugins must be added before the following line
 call plug#end()           " required
@@ -172,7 +178,7 @@ nnoremap ; :
 vnoremap ; :
 " RETROSPECT: If you don't do this, you are a crazy person.
 
-" make saving one less keystroke
+" save me one less keystroke
 nnoremap <leader>w :w<enter>
 " because I am exactly that lazy
 
@@ -186,19 +192,18 @@ inoremap jk <esc>
 " less potentially damaging) than adding nonsense text if I accidentally left
 " it in insert mode.
 
-" create new vsplit and switch to it. 
-noremap <leader>v <C-w>v
-" RETROSPECT: this is lovely.
-
+""" Split management 
+" new vsplit
+nnoremap <leader>v <C-w>v
 " new hsplit
-noremap <leader>s <C-w>s
-" RETROSPECT: rarely use this. Still nice though
+nnoremap <leader>s <C-w>s
 
 " bindings for easy split nav
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" NOTE: Removed because tmux plugin now handles this.
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
 " RETROSPECT: crazy useful. I would never use splits if I didn't have this.
 
 " Search and replace word under cursor
@@ -207,22 +212,24 @@ nnoremap <leader>8 :%s/\<<C-r><C-w>\>//g<Left><Left>
 " to use this more often!
 
 " Clear match highlighting
-noremap <leader>, :noh<cr>:call clearmatches()<cr>
-" RETROSPECT: I use this more than i ever expected I would.
+noremap <leader>, :noh<CR>:call clearmatches()<CR>
+" RETROSPECT: I use this more than I ever expected I would.
 
 " Quick buffer switching
-nnoremap <leader><leader> <c-^>
-nnoremap <leader>n :bn<cr>
-nnoremap <leader>p :bp<cr>
-nnoremap <leader>d :bd<cr>
+nnoremap <leader><leader> <C-^>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
+nnoremap <leader>d :bd<CR>
 " RETROSPECT: Crazy useful when working with multiple files.
 
 " AESTHETICS
 set t_Co=256
 set background=dark
-colorscheme vibrantink
+"colorscheme vibrantink
 "colorscheme vividchalk
-"colorscheme molokai
+"colorscheme ansi_blows
+colorscheme molokai
+
 highlight ColorColumn ctermbg=237
 " NOTE: This changes the colorcolumn to gray after the colorscheme is defined.
 " I've found that many colorschemes have colorcolumn colors that give me eye
@@ -238,18 +245,20 @@ set foldnestmax=10
 set foldlevel=1
 
 " toggle current fold
-nnoremap <c-a> za
+nnoremap <C-a> za
 
 " folding can be annoying sometimes
-nnoremap <leader>z :set nofoldenable<enter>
-nnoremap <leader>Z :set foldenable<enter>
+nnoremap <leader>z :set nofoldenable<CR>
+nnoremap <leader>Z :set foldenable<CR>
+
+nnoremap <leader>s :Obsess<CR>
 
 
 """ PLUGIN SETTINGS
 
 "" CTRLP
 
-let g:ctrlp_map = '<c-t>'
+let g:ctrlp_map = '<C-t>'
 let g:ctrlp_cmd = 'CtrlP'
 
 "" SYNTASTIC
@@ -292,8 +301,8 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:BASH_Ctrl_j = 'off'
 let g:BASH_Ctrl_k = 'off'
 let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 let g:UltiSnipsEditSplit="vertical"
 

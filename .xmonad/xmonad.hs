@@ -9,7 +9,8 @@ main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig
         { terminal = "urxvt"
-        , focusedBorderColor = "black"
+        , normalBorderColor = "#333333"
+        , focusedBorderColor = "#111111"
         , manageHook = manageDocks <+> (className =? "Vlc" --> doFloat) <+> manageHook defaultConfig
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
         , logHook = dynamicLogWithPP xmobarPP
@@ -22,5 +23,6 @@ main = do
         , ((controlMask, xK_Print),spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
         , ((mod4Mask, xK_x), spawn "toggle-touchpad") -- Turn off the touchpad
-        , ((mod4Mask .|. shiftMask, xK_l), spawn "luakit") -- Activate Luakit
+        , ((mod4Mask , xK_g), spawn "google-chrome") -- Start Chrome
+        , ((mod4Mask .|. shiftMask, xK_l), spawn "luakit") -- Start Luakit
         ]

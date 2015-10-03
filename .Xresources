@@ -88,7 +88,7 @@ URxvt*color15: #EEEEEC
 ! URxvt*borderColor: colour
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked
-URxvt*font: xft:UbuntuMono-R:size=12
+URxvt*font: xft:Hack:size=12
 
 ! To get list of monospaced fonts, enter:
 ! fc-list -f "%{family} : %{file}\n" :spacing=100 | sort

@@ -17,6 +17,9 @@ alias supd='sudo apt-get update'
 alias inst='sudo apt-get install'
 alias c='clear'
 
+# Maximum lazy
+alias v='vim'
+
 # Sure, why not?
 alias please='sudo'
 
@@ -26,3 +29,22 @@ alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "stat
 # Set dual screen on my laptop.
 alias 2scrn='xrandr --output HDMI1 --auto --right-of eDP1'
 # TODO: Make an alias to return to single screen.
+
+
+# Tmux
+alias ta='tmux attach -t'
+alias ts='tmux switch -t'
+alias tnew='tmux new -s'
+alias tls='tmux ls'
+alias tkill='tmux kill-session -t'
+
+# Editing config files
+alias ea='vim ~/.aliases'
+alias ev='vim ~/.vimrc'
+alias ex='vim ~/.xmonad/xmonad.hs'
+alias ez='vim ~/.zshrc'
+alias et='vim ~/.tmux.conf'
+
+# I can never remember these
+alias tgzout='tar -zxvf' # sourcefile.tgz -C /path/to/destination/directory
+alias tgzin='tar -cvzf' # name.tgz /path/to/source/directory

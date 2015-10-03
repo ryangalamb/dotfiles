@@ -11,6 +11,9 @@ stalonetray &
 
 xscreensaver -no-splash &
 
+# TODO: Implement something DE agnostic
+mate-volume-control-applet &
+
 if [ -x /usr/bin/nm-applet ] ; then
   nm-applet --sm-disable &
 fi

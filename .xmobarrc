@@ -1,4 +1,4 @@
-Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+Config { font = "xft:Hack:size=9:bold:antialias=true"
         , borderColor = "black"
         , border = TopB
         , bgColor = "black"
@@ -16,5 +16,5 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% | %cpu% | %memory% * %swap% | %eth0% - %eth1% }{<fc=#ee9a00>%date%</fc> | %uname% | %CYVR% "
+        , template = "%StdinReader% | %cpu% | %memory% * %swap% | %eth0% - %eth1% }{<fc=#ee9a00>%date%</fc> | %uname% | %CYVR% |       "
         }
