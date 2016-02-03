@@ -9,7 +9,8 @@ zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 
 # enable autocorrection of commands typed
-setopt correctall
+# (I don't like this right now. I do weird stuff that gives false positives)
+#setopt correctall
 
 # Enables Bash-style comments on command line
 setopt interactivecomments

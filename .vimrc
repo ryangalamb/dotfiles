@@ -11,16 +11,20 @@ Plug 'SirVer/ultisnips'
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Valloric/YouCompleteMe'
 
-"" JavaScript
-Plug 'pangloss/vim-javascript'
-
-Plug 'moll/vim-node'
-
+"" git
 Plug 'tpope/vim-fugitive'
+
+"" JavaScript
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
+
+"" Clojure
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " install these when you know you'll actually use them
 " Plug 'scrooloose/syntastic'
@@ -127,5 +131,5 @@ let g:UltiSnipsEditSplit = "vertical"
 
 let g:UltiSnipsExpandTrigger = "<C-J>"
 
-"" YouCompeteMe
+"" YouCompleteMe
 let g:ycm_collect_identifiers_from_tag_files = 1

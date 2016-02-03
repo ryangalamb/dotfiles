@@ -1,7 +1,7 @@
 alias ls='ls --color=auto'
-
-alias ll='ls -alF'
-alias la='ls -A'
+alias la='ls -a'
+alias ll='ls -l'
+alias lla='ls -la'
 alias l='ls -CF'
 
 alias tree='tree -C'
@@ -25,6 +25,7 @@ alias s0='~/scripts/awp_expect_wrapper S0'
 alias u0='~/scripts/awp_expect_wrapper USB0'
 alias u1='~/scripts/awp_expect_wrapper USB1'
 
+## Git aliases!
 alias gs='git status'
 alias ga='git add'
 alias gl='git log'
