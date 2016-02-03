@@ -1,50 +1,33 @@
-# Let there be color!
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
-# basic ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Compile less files when in top directory of a project.
-alias lsc='lessc ./less/style.less ./css/style.css'
+alias tree='tree -C'
 
-# Yes, I am exactly this lazy.
-alias supd='sudo apt-get update'
-alias inst='sudo apt-get install'
 alias c='clear'
 
-# Maximum lazy
-alias v='vim'
-
-# Sure, why not?
-alias please='sudo'
-
-# Check battery status.
-alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "state|to\ full|percentage"'
-
-# Set dual screen on my laptop.
-alias 2scrn='xrandr --output HDMI1 --auto --right-of eDP1'
-# TODO: Make an alias to return to single screen.
-
-
-# Tmux
 alias ta='tmux attach -t'
 alias ts='tmux switch -t'
 alias tnew='tmux new -s'
 alias tls='tmux ls'
 alias tkill='tmux kill-session -t'
+alias td='tmux detach'
 
-# Editing config files
-alias ea='vim ~/.aliases'
-alias ev='vim ~/.vimrc'
-alias ex='vim ~/.xmonad/xmonad.hs'
-alias ez='vim ~/.zshrc'
-alias et='vim ~/.tmux.conf'
+# TODO: Extract context-specific aliases into a seperate file and source that
+alias buildser='ssh $BUILD_SERVER'
 
-# I can never remember these
-alias tgzout='tar -zxvf' # sourcefile.tgz -C /path/to/destination/directory
-alias tgzin='tar -cvzf' # name.tgz /path/to/source/directory
+alias mnt_build_server='sshfs -o Ciphers=arcfour -o Compression=no -o reconnect ${BUILD_SERVER}: ~/.build_server'
+alias mnt_tftp_server='sshfs -o Ciphers=arcfour -o Compression=no -o reconnect ${TFTP_SERVER}: ~/.tftp_server'
+
+alias s0='~/scripts/awp_expect_wrapper S0'
+alias u0='~/scripts/awp_expect_wrapper USB0'
+alias u1='~/scripts/awp_expect_wrapper USB1'
+
+alias gs='git status'
+alias ga='git add'
+alias gl='git log'
+alias gb='git branch'
+alias gch='git checkout'
+alias gcom='git commit'
