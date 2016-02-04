@@ -8,27 +8,14 @@ alias tree='tree -C'
 
 alias c='clear'
 
-alias ta='tmux attach -t'
-alias ts='tmux switch -t'
-alias tnew='tmux new -s'
-alias tls='tmux ls'
-alias tkill='tmux kill-session -t'
-alias td='tmux detach'
-
-# TODO: Extract context-specific aliases into a seperate file and source that
-alias buildser='ssh $BUILD_SERVER'
-
-alias mnt_build_server='sshfs -o Ciphers=arcfour -o Compression=no -o reconnect ${BUILD_SERVER}: ~/.build_server'
-alias mnt_tftp_server='sshfs -o Ciphers=arcfour -o Compression=no -o reconnect ${TFTP_SERVER}: ~/.tftp_server'
-
-alias s0='~/scripts/awp_expect_wrapper S0'
-alias u0='~/scripts/awp_expect_wrapper USB0'
-alias u1='~/scripts/awp_expect_wrapper USB1'
-
 ## Git aliases!
-alias gs='git status'
-alias ga='git add'
-alias gl='git log'
-alias gb='git branch'
-alias gch='git checkout'
+alias gstat='git status'
+alias gadd='git add'
+alias glog='git log'
+alias gbr='git branch'
+alias gcheck='git checkout'
 alias gcom='git commit'
+
+if [ -f ~/.aliases_local ]; then
+  . ~/.aliases_local
+fi
