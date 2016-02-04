@@ -1,0 +1,12 @@
+{
+  ".aliases": "~/.aliases"
+  ".bash_profile": "~/.bash_profile"
+  ".bashrc": "~/.bashrc"
+  ".inputrc": "~/.inputrc"
+  ".tmux.conf": "~/.tmux.conf"
+  ".vimrc": "~/.vimrc"
+  "xmonad.hs": "~/.xmonad/xmonad.hs"
+  ".Xresources": "~/.Xresources"
+  ".zprofile": "~/.zprofile"
+  ".zshrc": "~/.zshrc"
+}
