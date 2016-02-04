@@ -4,6 +4,7 @@
   ".bashrc": "~/.bashrc"
   ".inputrc": "~/.inputrc"
   ".tmux.conf": "~/.tmux.conf"
+  "init.vim": "~/.config/nvim/init.vim"
   ".vimrc": "~/.vimrc"
   "xmonad.hs": "~/.xmonad/xmonad.hs"
   ".Xresources": "~/.Xresources"
