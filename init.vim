@@ -1,7 +1,7 @@
 " TODO: Split off a vim-specific version of this.
 
 "" Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged') " TODO: Give this the proper neovim path
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
@@ -15,6 +15,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Valloric/YouCompleteMe'
+
+"" ctags
+"Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
 
 "" git
 Plug 'tpope/vim-fugitive'
@@ -92,6 +96,16 @@ nnoremap <leader>s <C-W>s
 nnoremap <leader>+ 10<C-W>+
 nnoremap <leader>- 10<C-W>-
 
+"" Tab Settings
+nnoremap é gt
+nnoremap â gT
+
+inoremap é <ESC>gt
+inoremap â <ESC>gT
+
+tnoremap é <C-\><C-N><C-W>gt
+tnoremap â <C-\><C-N><C-W>gT
+
 "" Mode Switch Settings
 nnoremap ; :
 inoremap jf <ESC>
@@ -111,6 +125,10 @@ nnoremap <leader><leader> <C-^>
 
 "" Registers and Macros
 nnoremap Q @q
+
+"" Tags
+nnoremap <F8> :TagbarToggle<CR>
+set tags=./tags;
 
 "" Display
 set background=dark
@@ -133,3 +151,8 @@ let g:UltiSnipsExpandTrigger = "<C-J>"
 
 "" YouCompleteMe
 let g:ycm_collect_identifiers_from_tag_files = 1
+
+"" Fugitive
+" Don't keep fugitive buffers open after hiding them
+au bufReadPost fugitive://* set bufhidden=delete
+nnoremap <leader>gb :Gblame<CR>
