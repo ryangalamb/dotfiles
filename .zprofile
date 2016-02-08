@@ -1,8 +1,8 @@
 # Load up environment variables
-if [ -f ~/.env_vars ]; then
+if [ -s ~/.env_vars ]; then
   . ~/.env_vars
 fi
 
-if [ -f ~/.zshrc ]; then
+if [ -s ~/.zshrc ]; then
   . ~/.zshrc
 fi

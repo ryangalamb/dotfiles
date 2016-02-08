@@ -97,14 +97,17 @@ nnoremap <leader>+ 10<C-W>+
 nnoremap <leader>- 10<C-W>-
 
 "" Tab Settings
+" alt + i, alt + b
 nnoremap é gt
 nnoremap â gT
 
 inoremap é <ESC>gt
 inoremap â <ESC>gT
 
-tnoremap é <C-\><C-N><C-W>gt
-tnoremap â <C-\><C-N><C-W>gT
+tnoremap é <C-\><C-N>gt
+tnoremap â <C-\><C-N>gT
+
+nnoremap ô :tabe term://.//zsh<CR>
 
 "" Mode Switch Settings
 nnoremap ; :
@@ -155,4 +158,4 @@ let g:ycm_collect_identifiers_from_tag_files = 1
 "" Fugitive
 " Don't keep fugitive buffers open after hiding them
 au bufReadPost fugitive://* set bufhidden=delete
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>b :Gblame<CR>
