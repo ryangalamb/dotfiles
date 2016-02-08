@@ -107,6 +107,7 @@ inoremap â <ESC>gT
 tnoremap é <C-\><C-N>gt
 tnoremap â <C-\><C-N>gT
 
+" alt + t
 nnoremap ô :tabe term://.//zsh<CR>
 
 "" Mode Switch Settings

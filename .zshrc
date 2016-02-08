@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/rjmill/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -15,7 +15,7 @@ plugins=(git vi-mode nvm)
 
 # User configuration
 
-  export PATH="/home/rjmill/.nvm/versions/node/v5.5.0/bin:/home/rjmill/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+  export PATH="$HOME/.nvm/versions/node/v5.5.0/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
   export EDITOR="/usr/bin/nvim"
   # bindkey -v
@@ -36,10 +36,10 @@ plugins=(git vi-mode nvm)
 # For a full list of active aliases, run `alias`.
 
 # TODO: Source my aliases into ZSH_CUSTOM
-  if [ -f ~/.aliases ];then
+  if [[ -f ~/.aliases ]];then
     source $HOME/.aliases
   fi
 
-  if [ -f ~/.env_vars ];then
+  if [[ -f ~/.env_vars ]];then
     source $HOME/.env_vars
   fi
