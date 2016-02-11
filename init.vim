@@ -29,6 +29,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 
+"" Handlebars
+Plug 'mustache/vim-mustache-handlebars'
+
 "" Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
@@ -68,72 +71,68 @@ set incsearch
 set hlsearch
 set gdefault
 
-noremap <leader>, :noh<CR>:call clearmatches()<CR>
+noremap <leader>, :noh<cr>:call clearmatches()<cr>
 
 nnoremap / /\v
 vnoremap / /\v
 
-nnoremap <C-L> ;
+nnoremap <c-l> ;
 
 "" Window Settings
-" These characters are alt + hjkl on my systems
-nnoremap è <C-W>h
-nnoremap ê <C-W>j
-nnoremap ë <C-W>k
-nnoremap ì <C-W>l
+nnoremap <m-h> <c-w>h
+nnoremap <m-j> <c-w>j
+nnoremap <m-k> <c-w>k
+nnoremap <m-l> <c-w>l
 
-inoremap è <ESC><C-W>h
-inoremap ê <ESC><C-W>j
-inoremap ë <ESC><C-W>k
-inoremap ì <ESC><C-W>l
+inoremap <m-h> <esc><c-w>h
+inoremap <m-j> <esc><c-w>j
+inoremap <m-k> <esc><c-w>k
+inoremap <m-l> <esc><c-w>l
 
-tnoremap è <C-\><C-N><C-W>h
-tnoremap ê <C-\><C-N><C-W>j
-tnoremap ë <C-\><C-N><C-W>k
-tnoremap ì <C-\><C-N><C-W>l
+tnoremap <m-h> <c-\><c-n><c-w>h
+tnoremap <m-j> <c-\><c-n><c-w>j
+tnoremap <m-k> <c-\><c-n><c-w>k
+tnoremap <m-l> <c-\><c-n><c-w>l
 
-nnoremap <leader>v <C-W>v
-nnoremap <leader>s <C-W>s
+nnoremap <leader>v <c-w>v
+nnoremap <leader>s <c-w>s
 
-nnoremap <leader>+ 10<C-W>+
-nnoremap <leader>- 10<C-W>-
+nnoremap <leader>+ 10<c-w>+
+nnoremap <leader>- 10<c-w>-
 
 "" Tab Settings
-" alt + i, alt + b
-nnoremap é gt
-nnoremap â gT
+nnoremap <m-i> gt
+nnoremap <m-b> gT
 
-inoremap é <ESC>gt
-inoremap â <ESC>gT
+inoremap <m-i> <esc>gt
+inoremap <m-b> <esc>gT
 
-tnoremap é <C-\><C-N>gt
-tnoremap â <C-\><C-N>gT
+tnoremap <m-i> <c-\><c-n>gt
+tnoremap <m-b> <c-\><c-n>gT
 
-" alt + t
-nnoremap ô :tabe term://.//zsh<CR>
+nnoremap <m-t> :tabe term://.//zsh<cr>
 
 "" Mode Switch Settings
 nnoremap ; :
-inoremap jf <ESC>
-inoremap jk <ESC>
-inoremap kj <ESC>
+inoremap jf <esc>
+inoremap jk <esc>
+inoremap kj <esc>
 
-tnoremap <C-\> <C-\><C-N>
-tnoremap » <C-\><C-N>
+tnoremap <c-\> <c-\><c-n>
 
 "" Shortcuts (unabashed laziness)
-nnoremap <leader>w :w<CR>
+nnoremap <leader>w :w<cr>
 nnoremap <leader>e :e ~/
 
 "" Buffer stuff
 set hidden " to keep terminal buffers open in background
-nnoremap <leader><leader> <C-^>
+nnoremap <leader><leader> <c-^>
 
 "" Registers and Macros
 nnoremap Q @q
 
 "" Tags
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<cr>
 set tags=./tags;
 
 "" Display
@@ -147,13 +146,13 @@ set scrolloff=2
 let &colorcolumn="81,".join(range(121,999),",")
 
 "" NERDTree
-map <leader>m :NERDTreeToggle<CR>
+map <leader>m :NERDTreeToggle<cr>
 
 "" UltiSnips
-nnoremap <leader>u :UltiSnipsEdit<CR>
+nnoremap <leader>u :UltiSnipsEdit<cr>
 let g:UltiSnipsEditSplit = "vertical"
 
-let g:UltiSnipsExpandTrigger = "<C-J>"
+let g:UltiSnipsExpandTrigger = "<c-l>"
 
 "" YouCompleteMe
 let g:ycm_collect_identifiers_from_tag_files = 1
@@ -161,4 +160,4 @@ let g:ycm_collect_identifiers_from_tag_files = 1
 "" Fugitive
 " Don't keep fugitive buffers open after hiding them
 au bufReadPost fugitive://* set bufhidden=delete
-nnoremap <leader>b :Gblame<CR>
+nnoremap <leader>b :Gblame<cr>
