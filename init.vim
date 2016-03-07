@@ -120,6 +120,10 @@ inoremap kj <esc>
 
 tnoremap <c-\> <c-\><c-n>
 
+"" Folding
+nnoremap <leader>z za
+autocmd FileType text setlocal foldmethod=indent
+
 "" Shortcuts (unabashed laziness)
 nnoremap <leader>w :w<cr>
 nnoremap <leader>e :e ~/
@@ -144,6 +148,8 @@ set showmatch
 set scrolloff=2
 
 let &colorcolumn="81,".join(range(121,999),",")
+
+set textwidth=80
 
 "" NERDTree
 map <leader>m :NERDTreeToggle<cr>
