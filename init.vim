@@ -158,7 +158,7 @@ map <leader>m :NERDTreeToggle<cr>
 nnoremap <leader>u :UltiSnipsEdit<cr>
 let g:UltiSnipsEditSplit = "vertical"
 
-let g:UltiSnipsExpandTrigger = "<c-l>"
+let g:UltiSnipsExpandTrigger = "<c-f>"
 
 "" YouCompleteMe
 let g:ycm_collect_identifiers_from_tag_files = 1
