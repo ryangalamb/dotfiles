@@ -5,6 +5,7 @@ set show-all-if-ambiguous on
 set keymap vi-command
 "gg": beginning-of-history
 "G": end-of-history
+Control-l: vi-char-search
 
 set keymap vi-insert
 "jf": vi-movement-mode

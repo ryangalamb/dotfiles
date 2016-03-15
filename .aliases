@@ -13,8 +13,11 @@ alias gstat='git status'
 alias gadd='git add'
 alias glog='git log'
 alias gbr='git branch'
+alias gbr-ls='git branch --list'
 alias gcheck='git checkout'
 alias gcom='git commit'
+alias gdiff='git diff'
+alias gdiff-hh='git diff HEAD^ HEAD'
 
 if [ -f ~/.aliases_local ]; then
   . ~/.aliases_local
