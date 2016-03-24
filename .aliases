@@ -1,6 +1,7 @@
 alias ls='ls --color=auto'
-alias la='ls -a'
+alias la='ls -A'
 alias ll='ls -l'
+alias lr='ls -R'
 alias lla='ls -la'
 alias l='ls -CF'
 

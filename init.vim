@@ -1,5 +1,3 @@
-" TODO: Split off a vim-specific version of this.
-
 "" Plugins
 call plug#begin('~/.vim/plugged') " TODO: Give this the proper neovim path
 
@@ -37,6 +35,9 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 "" PlantUML
 Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+
+"" Rust
+Plug 'wting/rust.vim'
 
 " install these when you know you'll actually use them
 " Plug 'scrooloose/syntastic'
