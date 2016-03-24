@@ -35,6 +35,9 @@ Plug 'mustache/vim-mustache-handlebars'
 "" Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
+"" PlantUML
+Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+
 " install these when you know you'll actually use them
 " Plug 'scrooloose/syntastic'
 " Plug 'tpope/vim-projectionist'
@@ -127,6 +130,7 @@ autocmd FileType text setlocal foldmethod=indent
 "" Shortcuts (unabashed laziness)
 nnoremap <leader>w :w<cr>
 nnoremap <leader>e :e ~/
+nnoremap <F5> :make<cr>
 
 "" Buffer stuff
 set hidden " to keep terminal buffers open in background
