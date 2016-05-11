@@ -123,15 +123,24 @@ inoremap jk <esc>
 inoremap kj <esc>
 
 tnoremap <c-\> <c-\><c-n>
+" in case I forget that this doesn't escape in non-terminal buffers
+inoremap <c-\> <silent>
+nnoremap <c-\> <silent>
 
 "" Folding
 nnoremap <leader>z za
 autocmd FileType text setlocal foldmethod=indent
+autocmd FileType markdown setlocal foldmethod=indent
 
 "" Shortcuts (unabashed laziness)
 nnoremap <leader>w :w<cr>
 nnoremap <leader>e :e ~/
 nnoremap <F5> :make<cr>
+
+" paste and yank from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>y "+y
+
 
 "" Buffer stuff
 set hidden " to keep terminal buffers open in background
@@ -171,4 +180,3 @@ let g:ycm_collect_identifiers_from_tag_files = 1
 "" Fugitive
 " Don't keep fugitive buffers open after hiding them
 au bufReadPost fugitive://* set bufhidden=delete
-nnoremap <leader>b :Gblame<cr>

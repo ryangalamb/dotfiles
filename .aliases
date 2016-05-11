@@ -9,6 +9,8 @@ alias tree='tree -C'
 
 alias c='clear'
 
+alias where_the_hell_did_my_disk_space_go='du -h | sort -h'
+
 ## Git aliases!
 alias gstat='git status'
 alias gadd='git add'
