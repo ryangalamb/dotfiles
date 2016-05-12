@@ -23,9 +23,16 @@ Plug 'majutsushi/tagbar'
 "" git
 Plug 'tpope/vim-fugitive'
 
+"" HTML5
+Plug 'othree/html5.vim'
+
 "" JavaScript
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript'
 Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'jason0x43/vim-js-indent'
+
+"" React
+Plug 'mxw/vim-jsx'
 
 "" Handlebars
 Plug 'mustache/vim-mustache-handlebars'
