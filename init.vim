@@ -141,6 +141,9 @@ nnoremap <F5> :make<cr>
 nnoremap <leader>p "+p
 nnoremap <leader>y "+y
 
+vnoremap <leader>p "+p
+vnoremap <leader>y "+y
+
 
 "" Buffer stuff
 set hidden " to keep terminal buffers open in background
