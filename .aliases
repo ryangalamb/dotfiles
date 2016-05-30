@@ -11,6 +11,8 @@ alias c='clear'
 
 alias where_the_hell_did_my_disk_space_go='du -h | sort -h'
 
+alias ag='ag --ignore=**.ag --ignore=tags'
+
 ## Git aliases!
 alias gstat='git status'
 alias gadd='git add'

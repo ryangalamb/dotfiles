@@ -40,6 +40,15 @@ plugins=(git vi-mode nvm)
     source $HOME/.aliases
   fi
 
+  if [[ -f ~/.shell_funcs ]];then
+    source $HOME/.shell_funcs
+  fi
+
   if [[ -f ~/.env_vars ]];then
     source $HOME/.env_vars
   fi
+
+
+# tabtab source for yo package
+# uninstall by removing these lines or running `tabtab uninstall yo`
+[[ -f /home/rjmill/.nvm/versions/node/v6.2.0/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/rjmill/.nvm/versions/node/v6.2.0/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh

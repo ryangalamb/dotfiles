@@ -1,0 +1,23 @@
+## Prepend each path with ./ so you can use gf in vim without breaking things
+ag_safe_for_gf() {
+  ag $1 | sed 's_\(.\)_\./\1_'
+}
+
+## Automatically background ag and dump the results in a convenient file
+agbg() {
+  ag_safe_for_gf $1 > "$1".results.ag &
+}
+
+aggf() {
+  ag_safe_for_gf $1 > $1.results.ag
+}
+
+## Pull out my "me" comments
+agrjm() {
+  ag_safe_for_gf 'RJM' | sed 's_\(:[0-9]*:\).*RJM:_\1_' > RJM.ag
+}
+
+## Pull out todos
+agtodo() {
+  ag_safe_for_gf 'TODO.*:' > TODO.ag
+}
