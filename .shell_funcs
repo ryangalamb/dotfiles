@@ -21,3 +21,7 @@ agrjm() {
 agtodo() {
   ag_safe_for_gf 'TODO.*:' > TODO.ag
 }
+
+gcc-run() {
+  gcc -Wall -std=c99 "$1".c -o "$1" && ./"$1"
+}
