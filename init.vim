@@ -84,9 +84,6 @@ set gdefault
 
 noremap <leader>, :noh<cr>:call clearmatches()<cr>
 
-nnoremap / /\v
-vnoremap / /\v
-
 nnoremap <c-l> ;
 
 "" Window Settings
