@@ -24,6 +24,11 @@ alias gcom='git commit'
 alias gdiff='git diff'
 alias gdiff-hh='git diff HEAD^ HEAD'
 
+## tmux aliases!
+alias ta='tmux attach'
+
+alias gdb-nvim='gdb attach $(ps auxx | grep '"'"'[.]/build/bin/nvim'"'"' | awk '"'"'{print $2}'"'"')'
+
 if [ -f ~/.aliases_local ]; then
   . ~/.aliases_local
 fi

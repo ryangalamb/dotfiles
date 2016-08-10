@@ -128,8 +128,8 @@ inoremap kj <esc>
 
 tnoremap <c-\> <c-\><c-n>
 " in case I forget that this doesn't escape in non-terminal buffers
-inoremap <c-\> <silent>
-nnoremap <c-\> <silent>
+inoremap <c-\> <nop>
+nnoremap <c-\> <nop>
 
 "" Folding
 nnoremap <leader>z za
@@ -183,6 +183,7 @@ let g:UltiSnipsExpandTrigger = "<c-f>"
 
 "" YouCompleteMe
 let g:ycm_collect_identifiers_from_tag_files = 1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 "" Fugitive
 " Don't keep fugitive buffers open after hiding them

@@ -1,0 +1,19 @@
+{
+  "symlinks": [
+    {
+      "dependency": "vim",
+      "pathInRepo": ".vimrc",
+      "pathForLink": "~/.vimrc"
+    },
+    {
+      "dependency": "nvim",
+      "pathInRepo": "init.vim",
+      "pathForLink": "~/.config/nvim/init.vim"
+    },
+    {
+      "dependency": "bash",
+      "pathInRepo": "",
+      "pathForLink": ""
+    },
+  ]
+}
