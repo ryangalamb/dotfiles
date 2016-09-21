@@ -83,8 +83,15 @@ set hlsearch
 set gdefault
 
 noremap <leader>, :noh<cr>:call clearmatches()<cr>
+" search and replace word under cursor
+nnoremap <leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-nnoremap <c-l> ;
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+nnoremap <leader>k :grep! "\b<c-r><c-w>\b"<cr>:cw<cr>
 
 "" Window Settings
 nnoremap <m-h> <c-w>h
@@ -137,6 +144,7 @@ autocmd FileType text setlocal foldmethod=indent
 autocmd FileType markdown setlocal foldmethod=indent
 
 "" Shortcuts (unabashed laziness)
+nnoremap <c-l> ;
 nnoremap <leader>w :w<cr>
 nnoremap <leader>e :e ~/
 nnoremap <F5> :make<cr>
