@@ -46,6 +46,9 @@ Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
 "" Rust
 Plug 'wting/rust.vim'
 
+"" Elixir
+Plug 'elixir-lang/vim-elixir'
+
 " install these when you know you'll actually use them
 " Plug 'scrooloose/syntastic'
 " Plug 'tpope/vim-projectionist'
