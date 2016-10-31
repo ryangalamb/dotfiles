@@ -125,7 +125,28 @@ inoremap <m-b> <esc>gT
 tnoremap <m-i> <c-\><c-n>gt
 tnoremap <m-b> <c-\><c-n>gT
 
+"" Tab
 nnoremap <m-t> :tabe term://.//zsh<cr>
+
+nnoremap <m-1> 1gt
+nnoremap <m-2> 2gt
+nnoremap <m-3> 3gt
+nnoremap <m-4> 4gt
+nnoremap <m-5> 5gt
+nnoremap <m-6> 6gt
+nnoremap <m-7> 7gt
+nnoremap <m-8> 8gt
+nnoremap <m-9> 9gt
+
+tnoremap <m-1> <c-\><c-n>1gt
+tnoremap <m-2> <c-\><c-n>2gt
+tnoremap <m-3> <c-\><c-n>3gt
+tnoremap <m-4> <c-\><c-n>4gt
+tnoremap <m-5> <c-\><c-n>5gt
+tnoremap <m-6> <c-\><c-n>6gt
+tnoremap <m-7> <c-\><c-n>7gt
+tnoremap <m-8> <c-\><c-n>8gt
+tnoremap <m-9> <c-\><c-n>9gt
 
 "" Mode Switch Settings
 nnoremap ; :
