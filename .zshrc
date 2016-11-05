@@ -15,7 +15,7 @@ plugins=(git vi-mode nvm)
 
 # User configuration
 
-export PATH="$HOME/.nvm/versions/node/v5.5.0/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="$HOME/.nvm/versions/node/v5.5.0/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH"
 
 export EDITOR="/usr/bin/nvim"
 # bindkey -v

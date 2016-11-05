@@ -49,6 +49,8 @@ Plug 'wting/rust.vim'
 "" Elixir
 Plug 'elixir-lang/vim-elixir'
 
+Plug 'jmahler/hla.vim'
+
 " install these when you know you'll actually use them
 " Plug 'scrooloose/syntastic'
 " Plug 'tpope/vim-projectionist'
