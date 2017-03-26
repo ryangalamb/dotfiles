@@ -202,17 +202,20 @@ highlight ColorColumn ctermbg=237
 set showmatch
 set scrolloff=2
 
-let &colorcolumn="81,".join(range(121,999),",")
+let &colorcolumn="81"
 
 set textwidth=80
 
 "" NERDTree
 map <leader>m :NERDTreeToggle<cr>
 
+"" JSX
+let g:jsx_ext_required = 0
+
 "" UltiSnips
 nnoremap <leader>u :UltiSnipsEdit<cr>
 let g:UltiSnipsEditSplit = "vertical"
-
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger = "<c-f>"
 
 "" YouCompleteMe
