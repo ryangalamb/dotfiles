@@ -14,7 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'Valloric/YouCompleteMe'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "" ctags
 "Plug 'xolox/vim-easytags'
@@ -218,9 +218,23 @@ let g:UltiSnipsEditSplit = "vertical"
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger = "<c-f>"
 
-"" YouCompleteMe
-let g:ycm_collect_identifiers_from_tag_files = 1
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 0
+" keep ultisnips on top
+call deoplete#custom#set('ultisnips', 'rank', 1000)
+" don't autocomplete the first parens
+call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
+
+" deoplete suggested tab mapping
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 
 "" Fugitive
 " Don't keep fugitive buffers open after hiding them
