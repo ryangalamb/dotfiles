@@ -32,7 +32,13 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'jason0x43/vim-js-indent'
 
 "" React
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+
+"" SCSS
+Plug 'cakebaker/scss-syntax.vim'
+
+"" Vue
+Plug 'posva/vim-vue'
 
 "" Handlebars
 Plug 'mustache/vim-mustache-handlebars'
@@ -50,6 +56,12 @@ Plug 'wting/rust.vim'
 Plug 'elixir-lang/vim-elixir'
 
 Plug 'jmahler/hla.vim'
+
+"" TypeScript
+Plug 'leafgarland/typescript-vim'
+
+"" ngnix
+Plug 'chr4/nginx.vim'
 
 " install these when you know you'll actually use them
 " Plug 'scrooloose/syntastic'
@@ -96,7 +108,8 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-nnoremap <leader>k :grep! "\b<c-r><c-w>\b"<cr>:cw<cr>
+" TODO: find something you like better for this
+"nnoremap <leader>k :grep! "\b<c-r><c-w>\b"<cr>:cw<cr>
 
 "" Window Settings
 nnoremap <m-h> <c-w>h
@@ -206,11 +219,22 @@ let &colorcolumn="81"
 
 set textwidth=80
 
+""" Reset syntax highlighting
+" copy-pasted from https://vi.stackexchange.com/questions/2172/why-i-am-losing-syntax-highlighting-when-folding-code-within-a-script-tag
+nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
+
 "" NERDTree
 map <leader>m :NERDTreeToggle<cr>
 
 "" JSX
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
+
+"" Ruby
+au BufRead,BufNewFile {Gemfile,Vagrantfile,Berksfile} set ft=ruby
+" TODO: ruby syntax highlighting fix
+
+"" JavaScript
+au BufRead,BufNewFile {.babelrc} set ft=json
 
 "" UltiSnips
 nnoremap <leader>u :UltiSnipsEdit<cr>
@@ -238,4 +262,9 @@ endfunction"}}}
 
 "" Fugitive
 " Don't keep fugitive buffers open after hiding them
-au bufReadPost fugitive://* set bufhidden=delete
+au BufReadPost fugitive://* set bufhidden=delete
+
+" CSS/SCSS
+au! FileType vue,html,css,scss,less setl iskeyword+=-
+
+let g:vue_disable_pre_processors=1

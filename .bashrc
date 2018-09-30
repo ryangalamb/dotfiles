@@ -1,5 +1,8 @@
 # .bashrc
 
+# TODO: is this how I want to handle this?
+export EDITOR="/usr/bin/nvim"
+
 if [[ -f ~/.aliases ]]; then
   . ~/.aliases
 fi
