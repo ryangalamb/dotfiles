@@ -16,10 +16,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-"" ctags
-"Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
-
 "" git
 Plug 'tpope/vim-fugitive'
 
@@ -31,9 +27,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'jason0x43/vim-js-indent'
 
-"" React
-" Plug 'mxw/vim-jsx'
-
 "" SCSS
 Plug 'cakebaker/scss-syntax.vim'
 
@@ -43,18 +36,7 @@ Plug 'posva/vim-vue'
 "" Handlebars
 Plug 'mustache/vim-mustache-handlebars'
 
-"" Clojure
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-"" PlantUML
-Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
-
-"" Rust
-Plug 'wting/rust.vim'
-
-"" Elixir
-Plug 'elixir-lang/vim-elixir'
-
+"" High Level Assembly
 Plug 'jmahler/hla.vim'
 
 "" TypeScript
@@ -63,9 +45,11 @@ Plug 'leafgarland/typescript-vim'
 "" ngnix
 Plug 'chr4/nginx.vim'
 
-" install these when you know you'll actually use them
-" Plug 'scrooloose/syntastic'
-" Plug 'tpope/vim-projectionist'
+"" Scala
+Plug 'derekwyatt/vim-scala'
+
+"" Jenkinsfile
+Plug 'martinda/Jenkinsfile-vim-syntax'
 
 call plug#end()
 
@@ -144,8 +128,6 @@ tnoremap <m-i> <c-\><c-n>gt
 tnoremap <m-b> <c-\><c-n>gT
 
 "" Tab
-nnoremap <m-t> :tabe term://.//zsh<cr>
-
 nnoremap <m-1> 1gt
 nnoremap <m-2> 2gt
 nnoremap <m-3> 3gt
@@ -185,8 +167,6 @@ autocmd FileType markdown setlocal foldmethod=indent
 "" Shortcuts (unabashed laziness)
 nnoremap <c-l> ;
 nnoremap <leader>w :w<cr>
-nnoremap <leader>e :e ~/
-nnoremap <F5> :make<cr>
 
 " paste and yank from clipboard
 nnoremap <leader>p "+p
@@ -203,13 +183,9 @@ nnoremap <leader><leader> <c-^>
 "" Registers and Macros
 nnoremap Q @q
 
-"" Tags
-nnoremap <F8> :TagbarToggle<cr>
-set tags=./tags;
-
 "" Display
 set background=dark
-colorscheme molokai
+colorscheme molokai_dark
 highlight ColorColumn ctermbg=237
 
 set showmatch
@@ -225,9 +201,6 @@ nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
 
 "" NERDTree
 map <leader>m :NERDTreeToggle<cr>
-
-"" JSX
-" let g:jsx_ext_required = 0
 
 "" Ruby
 au BufRead,BufNewFile {Gemfile,Vagrantfile,Berksfile} set ft=ruby
@@ -246,9 +219,9 @@ let g:UltiSnipsExpandTrigger = "<c-f>"
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 0
 " keep ultisnips on top
-call deoplete#custom#set('ultisnips', 'rank', 1000)
+call deoplete#custom#source('ultisnips', 'rank', 1000)
 " don't autocomplete the first parens
-call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
+call deoplete#custom#source('_', 'converters', ['converter_remove_paren'])
 
 " deoplete suggested tab mapping
 inoremap <silent><expr> <TAB>
