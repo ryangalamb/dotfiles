@@ -18,6 +18,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "" git
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 
 "" HTML5
 Plug 'othree/html5.vim'
@@ -34,22 +35,25 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'posva/vim-vue'
 
 "" Handlebars
-Plug 'mustache/vim-mustache-handlebars'
+"Plug 'mustache/vim-mustache-handlebars'
 
 "" High Level Assembly
-Plug 'jmahler/hla.vim'
+"Plug 'jmahler/hla.vim'
 
 "" TypeScript
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 
 "" ngnix
-Plug 'chr4/nginx.vim'
+"Plug 'chr4/nginx.vim'
 
 "" Scala
-Plug 'derekwyatt/vim-scala'
+"Plug 'derekwyatt/vim-scala'
 
 "" Jenkinsfile
-Plug 'martinda/Jenkinsfile-vim-syntax'
+"Plug 'martinda/Jenkinsfile-vim-syntax'
+
+"" NixOS
+Plug 'LnL7/vim-nix'
 
 call plug#end()
 
@@ -185,8 +189,13 @@ nnoremap Q @q
 
 "" Display
 set background=dark
-colorscheme molokai_dark
-highlight ColorColumn ctermbg=237
+
+autocmd ColorScheme * highlight LineNr ctermbg=None
+
+autocmd ColorScheme * highlight ColorColumn ctermbg=237
+autocmd ColorScheme * highlight Folded ctermbg=236
+
+colorscheme PaperColor
 
 set showmatch
 set scrolloff=2
@@ -241,3 +250,5 @@ au BufReadPost fugitive://* set bufhidden=delete
 au! FileType vue,html,css,scss,less setl iskeyword+=-
 
 let g:vue_disable_pre_processors=1
+
+let g:airline_powerline_fonts = 1

@@ -11,8 +11,6 @@ alias c='clear'
 
 alias where_the_hell_did_my_disk_space_go='du -h | sort -h'
 
-alias ag='ag --ignore=**SNAPSHOT --ignore=**.ag --ignore=tags'
-
 ## Git aliases!
 alias gstat='git status'
 alias gadd='git add'
@@ -28,6 +26,8 @@ alias gdiff-hh='git diff HEAD^ HEAD'
 alias ta='tmux attach'
 
 alias gdb-nvim='gdb attach $(ps auxx | grep '"'"'[.]/build/bin/nvim'"'"' | awk '"'"'{print $2}'"'"')'
+
+alias doco="docker-compose"
 
 if [ -f ~/.aliases_local ]; then
   . ~/.aliases_local

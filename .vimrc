@@ -83,7 +83,7 @@ nnoremap <leader><leader> <c-^>
 nnoremap Q @q
 
 "" Display
-set background=dark
+"set background=dark
 colorscheme desert
 highlight ColorColumn ctermbg=237
 

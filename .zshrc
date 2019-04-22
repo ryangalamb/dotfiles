@@ -1,24 +1,15 @@
-# Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+autoload -Uz compinit promptinit
+compinit
+promptinit
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# allow bash-style comments on command-line
+setopt interactivecomments
 
+# TODO: decide what prompt you want
+prompt redhat
 
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode nvm)
-
-# User configuration
-
-export PATH="$HOME/.nvm/versions/node/v5.5.0/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH"
-
-export EDITOR="/usr/bin/nvim"
-# bindkey -v
+## KEYBINDINGS
+bindkey -v
 
 bindkey -M viins 'jf' vi-cmd-mode
 # Mash j and k together to enter command mode
@@ -26,17 +17,29 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
 bindkey -M vicmd '^L' vi-repeat-find
 
+# [untested] make backspace behave more like vim instead of default vi
+bindkey "^?" backward-delete-char
+
 export KEYTIMEOUT=10
 
-source $ZSH/oh-my-zsh.sh
+## COMPLETION
+# automatically find new executables in the $PATH
+zstyle ':completion:*' rehash true
+# show current auto selection
+#zstyle ':completion:*' menu yes select
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-bindkey -M menuselect ${terminfo[kcbt]} reverse-menu-complete
+## HISTORY
+HISTFILE="$HOME"/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt hist_expire_dups_first
+setopt hist_ignore_space
 
-# TODO: Source my aliases into ZSH_CUSTOM
+## ENVIRONMENT VARIABLES
+# TODO: put these in zprofile
+export EDITOR="nvim"
+
+# TODO: this should probably go before everything else
 if [[ -f ~/.aliases ]];then
   source $HOME/.aliases
 fi
@@ -48,8 +51,3 @@ fi
 if [[ -f ~/.env_vars ]];then
   source $HOME/.env_vars
 fi
-
-
-# tabtab source for yo package
-# uninstall by removing these lines or running `tabtab uninstall yo`
-[[ -f /home/rjmill/.nvm/versions/node/v6.2.0/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/rjmill/.nvm/versions/node/v6.2.0/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh
