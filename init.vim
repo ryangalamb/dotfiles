@@ -224,6 +224,13 @@ let g:UltiSnipsEditSplit = "vertical"
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger = "<c-f>"
 
+" https://github.com/SirVer/ultisnips/issues/593
+augroup ultisnips_no_auto_expansion
+    au!
+    au VimEnter * au! UltiSnips_AutoTrigger
+augroup END
+
+
 "" deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 0
@@ -231,6 +238,8 @@ let g:deoplete#enable_smart_case = 0
 call deoplete#custom#source('ultisnips', 'rank', 1000)
 " don't autocomplete the first parens
 call deoplete#custom#source('_', 'converters', ['converter_remove_paren'])
+" wait a bit before trying completions
+call deoplete#custom#option('auto_complete_delay', 150)
 
 " deoplete suggested tab mapping
 inoremap <silent><expr> <TAB>
@@ -241,6 +250,16 @@ function! s:check_back_space() abort "{{{
 let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
+" and get shift-tab working too!
+inoremap <silent><expr> <S-TAB>
+\ pumvisible() ? "\<C-p>" :
+\ <SID>check_back_space() ? "\<S-TAB>" :
+\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
 
 "" Fugitive
 " Don't keep fugitive buffers open after hiding them
