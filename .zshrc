@@ -11,7 +11,6 @@ prompt redhat
 ## KEYBINDINGS
 bindkey -v
 
-bindkey -M viins 'jf' vi-cmd-mode
 # Mash j and k together to enter command mode
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode

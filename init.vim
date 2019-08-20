@@ -1,5 +1,5 @@
 "" Plugins
-call plug#begin('~/.vim/plugged') " TODO: Give this the proper neovim path
+call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
@@ -33,6 +33,9 @@ Plug 'cakebaker/scss-syntax.vim'
 
 "" Vue
 Plug 'posva/vim-vue'
+
+"" Jinja
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 "" Handlebars
 "Plug 'mustache/vim-mustache-handlebars'
@@ -154,7 +157,6 @@ tnoremap <m-9> <c-\><c-n>9gt
 
 "" Mode Switch Settings
 nnoremap ; :
-inoremap jf <esc>
 inoremap jk <esc>
 inoremap kj <esc>
 
@@ -179,6 +181,8 @@ nnoremap <leader>y "+y
 vnoremap <leader>p "+p
 vnoremap <leader>y "+y
 
+nnoremap <leader>f :let @" = expand("%")<cr>
+
 
 "" Buffer stuff
 set hidden " to keep terminal buffers open in background
@@ -195,18 +199,67 @@ autocmd ColorScheme * highlight LineNr ctermbg=None
 autocmd ColorScheme * highlight ColorColumn ctermbg=237
 autocmd ColorScheme * highlight Folded ctermbg=236
 
+autocmd ColorScheme * highlight pythonBuiltin ctermfg=37
+
+autocmd ColorScheme * highlight jsFuncCall cterm=bold ctermfg=37
+autocmd ColorScheme * highlight jsClassFuncName cterm=bold ctermfg=37
+autocmd ColorScheme * highlight jsThis ctermfg=148
+
+" let g:PaperColor_Theme_Options = {
+"       \   'theme': {
+"       \     'default': {
+"       \       'allow_bold': 1,
+"       \       'allow_italic': 1,
+"       \     }
+"       \   },
+"       \   'language': {
+"       \     'python': {
+"       \       'highlight_builtins' : 1
+"       \     },
+"       \     'c': {
+"       \       'highlight_builtins' : 1
+"       \     },
+"       \     'cpp': {
+"       \       'highlight_standard_library': 1
+"       \     }
+"       \   }
+"       \ }
+
 colorscheme PaperColor
 
 set showmatch
 set scrolloff=2
 
-let &colorcolumn="81"
+let &colorcolumn="80"
 
-set textwidth=80
+set textwidth=79
 
 """ Reset syntax highlighting
 " copy-pasted from https://vi.stackexchange.com/questions/2172/why-i-am-losing-syntax-highlighting-when-folding-code-within-a-script-tag
 nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
+
+function! s:dump_syntax()
+  let col = col(".")
+  let line = line(".")
+  let highlight_id = synID(line, col, 1)
+  let transparent_id = synID(line, col, 0)
+  let linked_id = synIDtrans(highlight_id)
+
+  let highlight_str = synIDattr(highlight_id, "name")
+            \ . "(" . synIDattr(highlight_id, "fg") . ")"
+
+  let transparent_str = synIDattr(transparent_id, "name")
+              \ . "(" . synIDattr(transparent_id, "fg") . ")"
+
+  let linked_str = synIDattr(linked_id, "name")
+         \ . "(" . synIDattr(linked_id, "fg") . ")"
+
+  return  "highlight   = " . highlight_str . "\n"
+      \ . "transparent = " . transparent_str . "\n"
+      \ . "linked      = " . linked_str
+endfunction
+
+nnoremap <leader>? :echo <SID>dump_syntax()<CR>
 
 "" NERDTree
 map <leader>m :NERDTreeToggle<cr>
@@ -239,7 +292,7 @@ call deoplete#custom#source('ultisnips', 'rank', 1000)
 " don't autocomplete the first parens
 call deoplete#custom#source('_', 'converters', ['converter_remove_paren'])
 " wait a bit before trying completions
-call deoplete#custom#option('auto_complete_delay', 150)
+call deoplete#custom#option('auto_complete_delay', 100)
 
 " deoplete suggested tab mapping
 inoremap <silent><expr> <TAB>

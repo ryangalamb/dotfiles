@@ -8,6 +8,5 @@ set keymap vi-command
 Control-l: vi-char-search
 
 set keymap vi-insert
-"jf": vi-movement-mode
 "jk": vi-movement-mode
 "kj": vi-movement-mode
