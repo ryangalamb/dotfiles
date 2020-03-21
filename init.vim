@@ -37,6 +37,12 @@ Plug 'posva/vim-vue'
 "" Jinja
 Plug 'Glench/Vim-Jinja2-Syntax'
 
+"" Mako
+Plug 'sophacles/vim-bundle-mako'
+
+"" Python indentation
+Plug 'vim-scripts/indentpython.vim'
+
 "" Handlebars
 "Plug 'mustache/vim-mustache-handlebars'
 
@@ -44,7 +50,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'jmahler/hla.vim'
 
 "" TypeScript
-"Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 
 "" ngnix
 "Plug 'chr4/nginx.vim'
@@ -229,6 +235,10 @@ colorscheme PaperColor
 
 set showmatch
 set scrolloff=2
+" HACK: scrolloff in terminal buffers causes terrible flicker https://github.com/neovim/neovim/issues/11072
+au TermEnter * setlocal scrolloff=0
+" DOUBLE HACK: scrolloff is global until https://github.com/neovim/neovim/pull/11854 is merged
+au TermLeave * setlocal scrolloff=3
 
 let &colorcolumn="80"
 
@@ -270,6 +280,10 @@ au BufRead,BufNewFile {Gemfile,Vagrantfile,Berksfile} set ft=ruby
 
 "" JavaScript
 au BufRead,BufNewFile {.babelrc} set ft=json
+let g:javascript_plugin_jsdoc = 1
+
+"" Fortran
+let fortran_free_source=1
 
 "" UltiSnips
 nnoremap <leader>u :UltiSnipsEdit<cr>
