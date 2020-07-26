@@ -64,6 +64,12 @@ Plug 'leafgarland/typescript-vim'
 "" NixOS
 Plug 'LnL7/vim-nix'
 
+"" YANG
+Plug 'nathanalderson/yang.vim'
+
+"" C++
+Plug 'bfrg/vim-cpp-modern'
+
 call plug#end()
 
 filetype on
@@ -281,6 +287,7 @@ au BufRead,BufNewFile {Gemfile,Vagrantfile,Berksfile} set ft=ruby
 "" JavaScript
 au BufRead,BufNewFile {.babelrc} set ft=json
 let g:javascript_plugin_jsdoc = 1
+
 
 "" Fortran
 let fortran_free_source=1
