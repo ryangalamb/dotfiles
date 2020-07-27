@@ -365,12 +365,16 @@ function! StatusLine(current, width)
   if a:current
     let l:s .= crystalline#right_sep('', 'Fill')
 
-    let l:git_head = fugitive#head()
-    if l:git_head != ''
-      let l:s .= ' ' . l:git_head
-    else
-      " Cross out the branch, to show that we're not in a git repo.
-      let l:s .= ' ' . "\u0336"
+    " Don't show git info for N/A buffers
+    let l:non_git = ['terminal', 'quickfix', 'nofile', 'help']
+    if index(l:non_git, &buftype) == -1
+      let l:git_head = fugitive#head()
+      if l:git_head != ''
+        let l:s .= ' ' . l:git_head
+      else
+        " Cross out the branch, to show that we're not in a git repo.
+        let l:s .= ' ' . "\u0336"
+      endif
     endif
   endif
 
