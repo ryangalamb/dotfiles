@@ -363,7 +363,15 @@ function! StatusLine(current, width)
   endif
   let l:s .= ' %f%h%w%m%r '
   if a:current
-    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+    let l:s .= crystalline#right_sep('', 'Fill')
+
+    let l:git_head = fugitive#head()
+    if l:git_head != ''
+      let l:s .= ' ' . l:git_head
+    else
+      " Cross out the branch, to show that we're not in a git repo.
+      let l:s .= ' ' . "\u0336"
+    endif
   endif
 
   let l:s .= '%='
