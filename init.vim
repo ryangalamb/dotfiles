@@ -124,10 +124,13 @@ inoremap <m-j> <esc><c-w>j
 inoremap <m-k> <esc><c-w>k
 inoremap <m-l> <esc><c-w>l
 
-tnoremap <m-h> <c-\><c-n><c-w>h
-tnoremap <m-j> <c-\><c-n><c-w>j
-tnoremap <m-k> <c-\><c-n><c-w>k
-tnoremap <m-l> <c-\><c-n><c-w>l
+" HACK: lazyredraw deosn't get rid of the '-- TERMINAL --' status, so we have
+"       to echo it away ourselves. (We could also redraw, but that causes the
+"       redraw command to flash on the prompt)
+tnoremap <m-h> <c-\><c-n><c-w>h:echo '' <cr>
+tnoremap <m-j> <c-\><c-n><c-w>j:echo '' <cr>
+tnoremap <m-k> <c-\><c-n><c-w>k:echo '' <cr>
+tnoremap <m-l> <c-\><c-n><c-w>l:echo '' <cr>
 
 nnoremap <leader>v <c-w>v
 nnoremap <leader>s <c-w>s
