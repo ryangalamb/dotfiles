@@ -351,13 +351,19 @@ function! StatusLine(current, width)
   let l:s = ''
 
   if a:current
-    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+    let l:cur_mode = crystalline#mode()
+    if l:cur_mode =~ 'INSERT' && &buftype ==# 'terminal'
+      " HACK: teach crystalline about TERMINAL mode
+      let l:cur_mode = substitute(l:cur_mode, 'INSERT', 'TERMINAL', '')
+    endif
+
+    let l:s .= l:cur_mode . crystalline#right_mode_sep('')
   else
     let l:s .= '%#CrystallineInactive#'
   endif
   let l:s .= ' %f%h%w%m%r '
   if a:current
-    let l:s .= crystalline#right_sep('', 'Fill') . '%{fugitive#head()}'
+    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
   endif
 
   let l:s .= '%='
@@ -382,7 +388,7 @@ endfunction
 let g:crystalline_enable_sep = 1
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'papercolor'
+let g:crystalline_theme = 'hybrid'
 
 set showtabline=1
 set guioptions-=e
