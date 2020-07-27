@@ -96,8 +96,6 @@ set relativenumber
 set mouse=c
 
 "" Search Settings
-set ignorecase
-set smartcase
 set incsearch
 set hlsearch
 set gdefault
@@ -307,7 +305,6 @@ augroup END
 
 "" deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 0
 " keep ultisnips on top
 call deoplete#custom#source('ultisnips', 'rank', 1000)
 " don't autocomplete the first parens
