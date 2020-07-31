@@ -145,8 +145,8 @@ nnoremap <m-b> gT
 inoremap <m-i> <esc>gt
 inoremap <m-b> <esc>gT
 
-tnoremap <m-i> <c-\><c-n>gt
-tnoremap <m-b> <c-\><c-n>gT
+tnoremap <m-i> <c-\><c-n>gt:echo '' <cr>
+tnoremap <m-b> <c-\><c-n>gT:echo '' <cr>
 
 "" Tab
 nnoremap <m-1> 1gt
@@ -159,15 +159,15 @@ nnoremap <m-7> 7gt
 nnoremap <m-8> 8gt
 nnoremap <m-9> 9gt
 
-tnoremap <m-1> <c-\><c-n>1gt
-tnoremap <m-2> <c-\><c-n>2gt
-tnoremap <m-3> <c-\><c-n>3gt
-tnoremap <m-4> <c-\><c-n>4gt
-tnoremap <m-5> <c-\><c-n>5gt
-tnoremap <m-6> <c-\><c-n>6gt
-tnoremap <m-7> <c-\><c-n>7gt
-tnoremap <m-8> <c-\><c-n>8gt
-tnoremap <m-9> <c-\><c-n>9gt
+tnoremap <m-1> <c-\><c-n>1gt:echo '' <cr>
+tnoremap <m-2> <c-\><c-n>2gt:echo '' <cr>
+tnoremap <m-3> <c-\><c-n>3gt:echo '' <cr>
+tnoremap <m-4> <c-\><c-n>4gt:echo '' <cr>
+tnoremap <m-5> <c-\><c-n>5gt:echo '' <cr>
+tnoremap <m-6> <c-\><c-n>6gt:echo '' <cr>
+tnoremap <m-7> <c-\><c-n>7gt:echo '' <cr>
+tnoremap <m-8> <c-\><c-n>8gt:echo '' <cr>
+tnoremap <m-9> <c-\><c-n>9gt:echo '' <cr>
 
 "" Mode Switch Settings
 nnoremap ; :
