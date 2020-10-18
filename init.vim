@@ -41,7 +41,9 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 "" Mako
 Plug 'sophacles/vim-bundle-mako'
 
-"" Python indentation
+"" Python
+" Plug 'vim-python/python-syntax'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'vim-scripts/indentpython.vim'
 
 "" Handlebars
@@ -94,7 +96,7 @@ set noswapfile
 
 "" Movement Settings
 set relativenumber
-set mouse=c
+set mouse=""
 
 "" Search Settings
 set incsearch
@@ -211,7 +213,10 @@ set background=dark
 autocmd ColorScheme * highlight LineNr ctermbg=None
 
 autocmd ColorScheme * highlight ColorColumn ctermbg=237
-autocmd ColorScheme * highlight Folded ctermbg=236
+"" Only use for PaperColor
+"" autocmd ColorScheme * highlight Folded ctermbg=236
+"" For SerialExperimentsLain
+autocmd ColorScheme * highlight Folded ctermfg=248 ctermbg=235 cterm=NONE
 
 autocmd ColorScheme * highlight pythonBuiltin ctermfg=37
 
@@ -239,7 +244,8 @@ autocmd ColorScheme * highlight jsThis ctermfg=148
 "       \   }
 "       \ }
 
-colorscheme PaperColor
+" colorscheme PaperColor
+colorscheme SerialExperimentsLain
 
 set showmatch
 set scrolloff=2
@@ -289,6 +295,11 @@ au BufRead,BufNewFile {Gemfile,Vagrantfile,Berksfile} set ft=ruby
 "" JavaScript
 au BufRead,BufNewFile {.babelrc} set ft=json
 let g:javascript_plugin_jsdoc = 1
+
+
+"" Python
+" let g:python_highlight_all = 1
+let g:semshi#no_default_builtin_highlight = v:false
 
 
 "" Fortran
@@ -387,7 +398,7 @@ function! StatusLine(current, width)
     let l:s .= crystalline#left_mode_sep('')
   endif
   if a:width > 80
-    let l:s .= ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+    let l:s .= ' %{&ft} %l/%L %c%V '
   else
     let l:s .= ' '
   endif
@@ -398,7 +409,7 @@ endfunction
 function! TabLine()
   let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
   let l:t = crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
-  let l:t = substitute(l:t, '', '', 'g')
+  let l:t = substitute(l:t, '', '▌', 'g')
   return l:t
 endfunction
 
@@ -406,6 +417,8 @@ let g:crystalline_enable_sep = 1
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
 let g:crystalline_theme = 'hybrid'
+" used to be 
+let g:crystalline_tab_separator = '│'
 
 set showtabline=1
 set guioptions-=e
