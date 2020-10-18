@@ -17,6 +17,8 @@ Plug 'rbong/vim-crystalline'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+Plug 'ap/vim-css-color'
+
 "" git
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
