@@ -211,20 +211,25 @@ nnoremap Q @q
 
 "" Display
 set background=dark
+" Tell nvim that this terminal doesn't have Background Color Erase (BCE)
+let &t_ut=''
 
-autocmd ColorScheme * highlight LineNr ctermbg=None
+" Use 24-bit RGB color
+set termguicolors
 
-autocmd ColorScheme * highlight ColorColumn ctermbg=237
+autocmd ColorScheme * highlight LineNr ctermbg=None guibg=None
+
+autocmd ColorScheme * highlight ColorColumn ctermbg=237 guibg=#3a3a3a
 "" Only use for PaperColor
-"" autocmd ColorScheme * highlight Folded ctermbg=236
+autocmd ColorScheme * highlight Folded ctermbg=236 guibg=#303030
 "" For SerialExperimentsLain
-autocmd ColorScheme * highlight Folded ctermfg=248 ctermbg=235 cterm=NONE
+" autocmd ColorScheme * highlight Folded ctermfg=248 ctermbg=235 cterm=NONE
 
-autocmd ColorScheme * highlight pythonBuiltin ctermfg=37
+autocmd ColorScheme * highlight pythonBuiltin ctermfg=37 guifg=#00afaf
 
-autocmd ColorScheme * highlight jsFuncCall cterm=bold ctermfg=37
-autocmd ColorScheme * highlight jsClassFuncName cterm=bold ctermfg=37
-autocmd ColorScheme * highlight jsThis ctermfg=148
+autocmd ColorScheme * highlight jsFuncCall cterm=bold ctermfg=37 guifg=#00afaf gui=bold
+autocmd ColorScheme * highlight jsClassFuncName cterm=bold ctermfg=37 guifg=#00afaf gui=bold
+autocmd ColorScheme * highlight jsThis ctermfg=148 guifg=#afd700
 
 " let g:PaperColor_Theme_Options = {
 "       \   'theme': {
@@ -246,8 +251,188 @@ autocmd ColorScheme * highlight jsThis ctermfg=148
 "       \   }
 "       \ }
 
-" colorscheme PaperColor
-colorscheme SerialExperimentsLain
+colorscheme PaperColor
+" colorscheme SerialExperimentsLain
+
+function HandleSemshiHighlights()
+
+  fun s:HL(group, fg, bg, attr)
+    if !empty(a:fg)
+      exec 'hi ' . a:group . ' guifg=' . a:fg[0] . ' ctermfg=' . a:fg[1]
+    endif
+    if !empty(a:bg)
+      exec 'hi ' . a:group . ' guibg=' . a:bg[0] . ' ctermbg=' . a:bg[1]
+    endif
+    if a:attr != ""
+      exec 'hi ' . a:group . ' gui=' . a:attr . ' cterm=' . a:attr
+    endif
+  endfun
+
+  let l:bold = "bold"
+  let l:italic = "italic"
+  let l:underline = "underline"
+
+  let l:color00                = ['#1c1c1c', '234']
+  let l:cursor_fg              = l:color00
+  let l:cursorlinenr_bg        = l:color00
+  let l:linenumber_bg          = l:color00
+  let l:statusline_active_fg   = l:color00
+  let l:todo_bg                = l:color00
+  let l:vertsplit_bg           = l:color00
+  let l:wildmenu_fg            = l:color00
+
+  let l:color01                = ['#af005f', '125']
+  let l:diffdelete_fg          = l:color01
+  let l:error_fg               = l:color01
+
+  let l:color02                = ['#5faf00', '70']
+
+  let l:color03                = ['#d7af5f', '179']
+
+  let l:color04                = ['#5fafd7', '74']
+  let l:color16                = l:color04
+
+  let l:color05                = ['#808080', '244']
+
+  let l:color06                = ['#d7875f', '173']
+
+  let l:color07                = ['#d0d0d0', '252']
+  let l:diffchange_fg          = l:color07
+
+  let l:color08                = ['#585858', '240']
+  let l:linenumber_fg          = l:color08
+  let l:tabline_inactive_bg    = l:color08
+
+  let l:color09                = ['#5faf5f', '71']
+
+  let l:color10                = ['#afd700', '148']
+  let l:wildmenu_bg            = l:color10
+
+  let l:color11                = ['#af87d7', '140']
+
+  let l:color12                = ['#ffaf00', '214']
+
+  let l:color13                = ['#ff5faf', '205']
+
+  let l:color14                = ['#00afaf', '37']
+  let l:tabline_active_bg      = l:color14
+
+  let l:color15                = ['#5f8787', '66']
+  let l:statusline_active_bg   = l:color15
+  let l:vertsplit_fg           = l:color15
+
+  let l:color17                = ['#d7af00', '178']
+
+  let l:cursor_bg              = ['#c6c6c6', '251']
+  let l:matchparen_fg          = l:cursor_bg
+  let l:popupmenu_fg           = l:cursor_bg
+
+  let l:cursorcolumn           = ['#303030', '236']
+  let l:cursorline             = l:cursorcolumn
+  let l:popupmenu_bg           = l:cursorcolumn
+
+  let l:cursorlinenr_fg        = ['#ffff00', '226']
+
+  let l:diffadd_bg             = ['#005f00', '22']
+  let l:spellrare              = l:diffadd_bg
+
+  let l:diffadd_fg             = ['#87d700', '112']
+
+  let l:diffchange_bg          = ['#005f5f', '23']
+
+  let l:error_bg               = ['#5f0000', '52']
+  let l:diffdelete_bg          = l:error_bg
+  let l:spellbad               = l:error_bg
+
+  let l:difftext_bg            = ['#008787', '30']
+
+  let l:difftext_fg            = ['#5fffff', '87']
+
+  let l:folded_bg              = ['#5f005f', '53']
+  let l:spellcap               = l:folded_bg
+
+  let l:folded_fg              = ['#d787ff', '177']
+
+  let l:matchparen_bg          = ['#4e4e4e', '239']
+
+  let l:search_bg              = ['#00875f', '29']
+
+  let l:search_fg              = ['#000000', '16']
+  let l:visual_fg              = l:search_fg
+
+  let l:spelllocal             = ['#00005f', '17']
+
+  let l:statusline_inactive_bg = ['#3a3a3a', '237']
+
+  let l:statusline_inactive_fg = ['#bcbcbc', '250']
+  let l:tabline_inactive_fg    = l:statusline_inactive_fg
+
+  let l:tabline_active_fg      = ['#121212', '233']
+
+  let l:tabline_bg             = ['#262626', '235']
+
+  let l:todo_fg                = ['#ff8700', '208']
+
+  let l:visual_bg              = ['#8787af', '103']
+
+  let l:background = l:color00
+  let l:negative   = l:color01
+  let l:positive   = l:color02
+  let l:olive      = l:color03 " string
+  let l:neutral    = l:color04
+  let l:comment    = l:color05
+  let l:navy       = l:color06 " storageclass
+  let l:foreground = l:color07
+
+  let l:nontext    = l:color08
+  let l:red        = l:color09 " import / try/catch
+  let l:pink       = l:color10 " statement, type
+  let l:purple     = l:color11 " if / conditional
+  let l:accent     = l:color12
+  let l:orange     = l:color13 " number
+  let l:blue       = l:color14 " other keyword
+  let l:highlight  = l:color15
+
+  let l:aqua       = l:color16
+  let l:green      = l:color17
+
+  call s:HL("pythonStatement", l:color09, "", "")
+
+" call s:HL("semshiLocal", l:TODO, "", "")
+  call s:HL("semshiGlobal", l:color10, "", "")
+  call s:HL("semshiImported", l:color10, "", l:bold)
+
+  call s:HL("semshiParameter", l:color04, "", "")
+  call s:HL("semshiParameterUnused", l:color04, "", "underline")
+  call s:HL("semshiFree", l:statusline_inactive_fg, "", "")           
+  call s:HL("semshiBuiltin", l:color13, "", "")
+  call s:HL("semshiAttribute", l:color11, "", "")
+  call s:HL("semshiSelf", l:statusline_inactive_fg, "", "")
+  call s:HL("semshiUnresolved", l:cursorlinenr_fg, "", l:underline)
+  call s:HL("semshiSelected", l:search_fg, l:cursor_bg, "")
+                     
+  call s:HL("semshiErrorSign", l:foreground, l:color00, "")
+  call s:HL("semshiErrorChar", l:foreground, l:error_bg, "undercurl")
+
+  " I am a child
+  sign define semshiError text=💩 texthl=semshiErrorSign
+""hi semshiLocal           ctermfg=209 guifg=#ff875f
+""hi semshiGlobal          ctermfg=214 guifg=#005faf
+""hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
+""hi semshiParameter       ctermfg=75  guifg=#5fafff
+""hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+""hi semshiFree            ctermfg=218 guifg=#ffafd7
+""hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
+""hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+""hi semshiSelf            ctermfg=249 guifg=#b2b2b2
+""hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+""hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
+
+""hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+""hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+""sign define semshiError text=E> texthl=semshiErrorSign
+endfunction
+autocmd FileType python call HandleSemshiHighlights()
 
 set showmatch
 set scrolloff=2
@@ -302,6 +487,7 @@ let g:javascript_plugin_jsdoc = 1
 "" Python
 " let g:python_highlight_all = 1
 let g:semshi#no_default_builtin_highlight = v:false
+let g:semshi#simplify_markup = v:true
 
 
 "" Fortran
