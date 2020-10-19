@@ -403,34 +403,19 @@ function HandleSemshiHighlights()
   call s:HL("semshiImported", l:color10, "", l:bold)
 
   call s:HL("semshiParameter", l:color04, "", "")
-  call s:HL("semshiParameterUnused", l:color04, "", "underline")
+  call s:HL("semshiParameterUnused", l:color04, "", "strikethrough")
   call s:HL("semshiFree", l:statusline_inactive_fg, "", "")           
-  call s:HL("semshiBuiltin", l:color13, "", "")
-  call s:HL("semshiAttribute", l:color11, "", "")
-  call s:HL("semshiSelf", l:statusline_inactive_fg, "", "")
+  call s:HL("semshiBuiltin", l:foreground, "", "bold")
+  call s:HL("semshiAttribute", l:foreground, "", "")
+  call s:HL("semshiSelf", l:color04, "", "bold")
   call s:HL("semshiUnresolved", l:cursorlinenr_fg, "", l:underline)
   call s:HL("semshiSelected", l:search_fg, l:cursor_bg, "")
                      
   call s:HL("semshiErrorSign", l:foreground, l:color00, "")
   call s:HL("semshiErrorChar", l:foreground, l:error_bg, "undercurl")
 
-  " I am a child
+  " Wow, I'm a child.
   sign define semshiError text=💩 texthl=semshiErrorSign
-""hi semshiLocal           ctermfg=209 guifg=#ff875f
-""hi semshiGlobal          ctermfg=214 guifg=#005faf
-""hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
-""hi semshiParameter       ctermfg=75  guifg=#5fafff
-""hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
-""hi semshiFree            ctermfg=218 guifg=#ffafd7
-""hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
-""hi semshiAttribute       ctermfg=49  guifg=#00ffaf
-""hi semshiSelf            ctermfg=249 guifg=#b2b2b2
-""hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
-""hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
-
-""hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-""hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-""sign define semshiError text=E> texthl=semshiErrorSign
 endfunction
 autocmd FileType python call HandleSemshiHighlights()
 
