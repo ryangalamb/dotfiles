@@ -1,4 +1,6 @@
-"" Plugins
+" vim:fileencoding=utf-8:foldmethod=marker
+
+"" Plugins {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -76,12 +78,15 @@ Plug 'nathanalderson/yang.vim'
 Plug 'bfrg/vim-cpp-modern'
 
 call plug#end()
+"" }}}
 
+"" Basics {{{
 filetype on
 syntax on
 let mapleader = "\<space>"
+"" }}}
 
-"" Tab Settings
+"" Tab Settings {{{
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -90,17 +95,20 @@ set smarttab
 set shiftround
 set autoindent
 set smartindent
+"" }}}
 
-"" Backup Settings
+"" Backup Settings {{{
 set nobackup
 set nowritebackup
 set noswapfile
+"" }}}
 
-"" Movement Settings
+"" Movement Settings {{{
 set relativenumber
 set mouse=""
+"" }}}
 
-"" Search Settings
+"" Search Settings {{{
 set incsearch
 set hlsearch
 set gdefault
@@ -116,8 +124,10 @@ endif
 
 " TODO: find something you like better for this
 "nnoremap <leader>k :grep! "\b<c-r><c-w>\b"<cr>:cw<cr>
+"
+"}}}
 
-"" Window Settings
+"" Window Settings {{{
 nnoremap <m-h> <c-w>h
 nnoremap <m-j> <c-w>j
 nnoremap <m-k> <c-w>k
@@ -141,8 +151,9 @@ nnoremap <leader>s <c-w>s
 
 nnoremap <leader>+ 10<c-w>+
 nnoremap <leader>- 10<c-w>-
+" }}}
 
-"" Tab Settings
+"" Tab Settings {{{
 nnoremap <m-i> gt
 nnoremap <m-b> gT
 
@@ -172,8 +183,9 @@ tnoremap <m-6> <c-\><c-n>6gt:echo '' <cr>
 tnoremap <m-7> <c-\><c-n>7gt:echo '' <cr>
 tnoremap <m-8> <c-\><c-n>8gt:echo '' <cr>
 tnoremap <m-9> <c-\><c-n>9gt:echo '' <cr>
+" }}}
 
-"" Mode Switch Settings
+"" Mode Switch Settings {{{
 nnoremap ; :
 inoremap jk <esc>
 inoremap kj <esc>
@@ -182,17 +194,20 @@ tnoremap <c-\> <c-\><c-n>
 " in case I forget that this doesn't escape in non-terminal buffers
 inoremap <c-\> <nop>
 nnoremap <c-\> <nop>
+" }}}
 
-"" Folding
+"" Folding {{{
 nnoremap <leader>z za
 autocmd FileType text setlocal foldmethod=indent
 autocmd FileType markdown setlocal foldmethod=indent
+" }}}
 
-"" Shortcuts (unabashed laziness)
+"" Shortcuts (unabashed laziness) {{{
 nnoremap <c-l> ;
 nnoremap <leader>w :w<cr>
+" }}}
 
-" paste and yank from clipboard
+" paste and yank from clipboard {{{
 nnoremap <leader>p "+p
 nnoremap <leader>y "+y
 
@@ -200,22 +215,167 @@ vnoremap <leader>p "+p
 vnoremap <leader>y "+y
 
 nnoremap <leader>f :let @" = expand("%")<cr>
+" }}}
 
 
-"" Buffer stuff
+"" Buffer stuff {{{
 set hidden " to keep terminal buffers open in background
 nnoremap <leader><leader> <c-^>
+" }}}
 
-"" Registers and Macros
+"" Registers and Macros {{{
 nnoremap Q @q
+" }}}
 
-"" Display
+"" Display {{{
 set background=dark
 " Tell nvim that this terminal doesn't have Background Color Erase (BCE)
 let &t_ut=''
 
 " Use 24-bit RGB color
 set termguicolors
+
+fun! s:HL(group, fg, bg, attr)
+  if !empty(a:fg)
+    exec 'hi ' . a:group . ' guifg=' . a:fg[0] . ' ctermfg=' . a:fg[1]
+  endif
+  if !empty(a:bg)
+    exec 'hi ' . a:group . ' guibg=' . a:bg[0] . ' ctermbg=' . a:bg[1]
+  endif
+  if a:attr != ""
+    exec 'hi ' . a:group . ' gui=' . a:attr . ' cterm=' . a:attr
+  endif
+endfun
+
+" COLORS {{{
+let s:bold = "bold"
+let s:italic = "italic"
+let s:underline = "underline"
+
+let s:color00                = ['#1c1c1c', '234']
+let s:cursor_fg              = s:color00
+let s:cursorlinenr_bg        = s:color00
+let s:linenumber_bg          = s:color00
+let s:statusline_active_fg   = s:color00
+let s:todo_bg                = s:color00
+let s:vertsplit_bg           = s:color00
+let s:wildmenu_fg            = s:color00
+
+let s:color01                = ['#af005f', '125']
+let s:diffdelete_fg          = s:color01
+let s:error_fg               = s:color01
+
+let s:color02                = ['#5faf00', '70']
+
+let s:color03                = ['#d7af5f', '179']
+
+let s:color04                = ['#5fafd7', '74']
+let s:color16                = s:color04
+
+let s:color05                = ['#808080', '244']
+
+let s:color06                = ['#d7875f', '173']
+
+let s:color07                = ['#d0d0d0', '252']
+let s:diffchange_fg          = s:color07
+
+let s:color08                = ['#585858', '240']
+let s:linenumber_fg          = s:color08
+let s:tabline_inactive_bg    = s:color08
+
+let s:color09                = ['#5faf5f', '71']
+
+let s:color10                = ['#afd700', '148']
+let s:wildmenu_bg            = s:color10
+
+let s:color11                = ['#af87d7', '140']
+
+let s:color12                = ['#ffaf00', '214']
+
+let s:color13                = ['#ff5faf', '205']
+
+let s:color14                = ['#00afaf', '37']
+let s:tabline_active_bg      = s:color14
+
+let s:color15                = ['#5f8787', '66']
+let s:statusline_active_bg   = s:color15
+let s:vertsplit_fg           = s:color15
+
+let s:color17                = ['#d7af00', '178']
+
+let s:cursor_bg              = ['#c6c6c6', '251']
+let s:matchparen_fg          = s:cursor_bg
+let s:popupmenu_fg           = s:cursor_bg
+
+let s:cursorcolumn           = ['#303030', '236']
+let s:cursorline             = s:cursorcolumn
+let s:popupmenu_bg           = s:cursorcolumn
+
+let s:cursorlinenr_fg        = ['#ffff00', '226']
+
+let s:diffadd_bg             = ['#005f00', '22']
+let s:spellrare              = s:diffadd_bg
+
+let s:diffadd_fg             = ['#87d700', '112']
+
+let s:diffchange_bg          = ['#005f5f', '23']
+
+let s:error_bg               = ['#5f0000', '52']
+let s:diffdelete_bg          = s:error_bg
+let s:spellbad               = s:error_bg
+
+let s:difftext_bg            = ['#008787', '30']
+
+let s:difftext_fg            = ['#5fffff', '87']
+
+let s:folded_bg              = ['#5f005f', '53']
+let s:spellcap               = s:folded_bg
+
+let s:folded_fg              = ['#d787ff', '177']
+
+let s:matchparen_bg          = ['#4e4e4e', '239']
+
+let s:search_bg              = ['#00875f', '29']
+
+let s:search_fg              = ['#000000', '16']
+let s:visual_fg              = s:search_fg
+
+let s:spelllocal             = ['#00005f', '17']
+
+let s:statusline_inactive_bg = ['#3a3a3a', '237']
+
+let s:statusline_inactive_fg = ['#bcbcbc', '250']
+let s:tabline_inactive_fg    = s:statusline_inactive_fg
+
+let s:tabline_active_fg      = ['#121212', '233']
+
+let s:tabline_bg             = ['#262626', '235']
+
+let s:todo_fg                = ['#ff8700', '208']
+
+let s:visual_bg              = ['#8787af', '103']
+
+let s:background = s:color00
+let s:negative   = s:color01
+let s:positive   = s:color02
+let s:olive      = s:color03 " string
+let s:neutral    = s:color04
+let s:comment    = s:color05
+let s:navy       = s:color06 " storageclass
+let s:foreground = s:color07
+
+let s:nontext    = s:color08
+let s:red        = s:color09 " import / try/catch
+let s:pink       = s:color10 " statement, type
+let s:purple     = s:color11 " if / conditional
+let s:accent     = s:color12
+let s:orange     = s:color13 " number
+let s:blue       = s:color14 " other keyword
+let s:highlight  = s:color15
+
+let s:aqua       = s:color16
+let s:green      = s:color17
+" }}}
 
 autocmd ColorScheme * highlight LineNr ctermbg=None guibg=None
 
@@ -254,165 +414,24 @@ autocmd ColorScheme * highlight jsThis ctermfg=148 guifg=#afd700
 colorscheme PaperColor
 " colorscheme SerialExperimentsLain
 
-function HandleSemshiHighlights()
+function! HandleSemshiHighlights()
+  call s:HL("pythonStatement", s:color09, "", "")
 
-  fun s:HL(group, fg, bg, attr)
-    if !empty(a:fg)
-      exec 'hi ' . a:group . ' guifg=' . a:fg[0] . ' ctermfg=' . a:fg[1]
-    endif
-    if !empty(a:bg)
-      exec 'hi ' . a:group . ' guibg=' . a:bg[0] . ' ctermbg=' . a:bg[1]
-    endif
-    if a:attr != ""
-      exec 'hi ' . a:group . ' gui=' . a:attr . ' cterm=' . a:attr
-    endif
-  endfun
+" call s:HL("semshiLocal", s:TODO, "", "")
+  call s:HL("semshiGlobal", s:color10, "", "")
+  call s:HL("semshiImported", s:color10, "", s:bold)
 
-  let l:bold = "bold"
-  let l:italic = "italic"
-  let l:underline = "underline"
-
-  let l:color00                = ['#1c1c1c', '234']
-  let l:cursor_fg              = l:color00
-  let l:cursorlinenr_bg        = l:color00
-  let l:linenumber_bg          = l:color00
-  let l:statusline_active_fg   = l:color00
-  let l:todo_bg                = l:color00
-  let l:vertsplit_bg           = l:color00
-  let l:wildmenu_fg            = l:color00
-
-  let l:color01                = ['#af005f', '125']
-  let l:diffdelete_fg          = l:color01
-  let l:error_fg               = l:color01
-
-  let l:color02                = ['#5faf00', '70']
-
-  let l:color03                = ['#d7af5f', '179']
-
-  let l:color04                = ['#5fafd7', '74']
-  let l:color16                = l:color04
-
-  let l:color05                = ['#808080', '244']
-
-  let l:color06                = ['#d7875f', '173']
-
-  let l:color07                = ['#d0d0d0', '252']
-  let l:diffchange_fg          = l:color07
-
-  let l:color08                = ['#585858', '240']
-  let l:linenumber_fg          = l:color08
-  let l:tabline_inactive_bg    = l:color08
-
-  let l:color09                = ['#5faf5f', '71']
-
-  let l:color10                = ['#afd700', '148']
-  let l:wildmenu_bg            = l:color10
-
-  let l:color11                = ['#af87d7', '140']
-
-  let l:color12                = ['#ffaf00', '214']
-
-  let l:color13                = ['#ff5faf', '205']
-
-  let l:color14                = ['#00afaf', '37']
-  let l:tabline_active_bg      = l:color14
-
-  let l:color15                = ['#5f8787', '66']
-  let l:statusline_active_bg   = l:color15
-  let l:vertsplit_fg           = l:color15
-
-  let l:color17                = ['#d7af00', '178']
-
-  let l:cursor_bg              = ['#c6c6c6', '251']
-  let l:matchparen_fg          = l:cursor_bg
-  let l:popupmenu_fg           = l:cursor_bg
-
-  let l:cursorcolumn           = ['#303030', '236']
-  let l:cursorline             = l:cursorcolumn
-  let l:popupmenu_bg           = l:cursorcolumn
-
-  let l:cursorlinenr_fg        = ['#ffff00', '226']
-
-  let l:diffadd_bg             = ['#005f00', '22']
-  let l:spellrare              = l:diffadd_bg
-
-  let l:diffadd_fg             = ['#87d700', '112']
-
-  let l:diffchange_bg          = ['#005f5f', '23']
-
-  let l:error_bg               = ['#5f0000', '52']
-  let l:diffdelete_bg          = l:error_bg
-  let l:spellbad               = l:error_bg
-
-  let l:difftext_bg            = ['#008787', '30']
-
-  let l:difftext_fg            = ['#5fffff', '87']
-
-  let l:folded_bg              = ['#5f005f', '53']
-  let l:spellcap               = l:folded_bg
-
-  let l:folded_fg              = ['#d787ff', '177']
-
-  let l:matchparen_bg          = ['#4e4e4e', '239']
-
-  let l:search_bg              = ['#00875f', '29']
-
-  let l:search_fg              = ['#000000', '16']
-  let l:visual_fg              = l:search_fg
-
-  let l:spelllocal             = ['#00005f', '17']
-
-  let l:statusline_inactive_bg = ['#3a3a3a', '237']
-
-  let l:statusline_inactive_fg = ['#bcbcbc', '250']
-  let l:tabline_inactive_fg    = l:statusline_inactive_fg
-
-  let l:tabline_active_fg      = ['#121212', '233']
-
-  let l:tabline_bg             = ['#262626', '235']
-
-  let l:todo_fg                = ['#ff8700', '208']
-
-  let l:visual_bg              = ['#8787af', '103']
-
-  let l:background = l:color00
-  let l:negative   = l:color01
-  let l:positive   = l:color02
-  let l:olive      = l:color03 " string
-  let l:neutral    = l:color04
-  let l:comment    = l:color05
-  let l:navy       = l:color06 " storageclass
-  let l:foreground = l:color07
-
-  let l:nontext    = l:color08
-  let l:red        = l:color09 " import / try/catch
-  let l:pink       = l:color10 " statement, type
-  let l:purple     = l:color11 " if / conditional
-  let l:accent     = l:color12
-  let l:orange     = l:color13 " number
-  let l:blue       = l:color14 " other keyword
-  let l:highlight  = l:color15
-
-  let l:aqua       = l:color16
-  let l:green      = l:color17
-
-  call s:HL("pythonStatement", l:color09, "", "")
-
-" call s:HL("semshiLocal", l:TODO, "", "")
-  call s:HL("semshiGlobal", l:color10, "", "")
-  call s:HL("semshiImported", l:color10, "", l:bold)
-
-  call s:HL("semshiParameter", l:color04, "", "")
-  call s:HL("semshiParameterUnused", l:color04, "", "strikethrough")
-  call s:HL("semshiFree", l:statusline_inactive_fg, "", "")           
-  call s:HL("semshiBuiltin", l:foreground, "", "bold")
-  call s:HL("semshiAttribute", l:foreground, "", "")
-  call s:HL("semshiSelf", l:color04, "", "bold")
-  call s:HL("semshiUnresolved", l:cursorlinenr_fg, "", l:underline)
-  call s:HL("semshiSelected", l:search_fg, l:cursor_bg, "")
+  call s:HL("semshiParameter", s:color04, "", "")
+  call s:HL("semshiParameterUnused", s:color04, "", "strikethrough")
+  call s:HL("semshiFree", s:statusline_inactive_fg, "", "")           
+  call s:HL("semshiBuiltin", s:foreground, "", "bold")
+  call s:HL("semshiAttribute", s:foreground, "", "")
+  call s:HL("semshiSelf", s:color04, "", "bold")
+  call s:HL("semshiUnresolved", s:cursorlinenr_fg, "", s:underline)
+  call s:HL("semshiSelected", s:search_fg, s:cursor_bg, "")
                      
-  call s:HL("semshiErrorSign", l:foreground, l:color00, "")
-  call s:HL("semshiErrorChar", l:foreground, l:error_bg, "undercurl")
+  call s:HL("semshiErrorSign", s:foreground, s:color00, "")
+  call s:HL("semshiErrorChar", s:foreground, s:error_bg, "undercurl")
 
   " Wow, I'm a child.
   sign define semshiError text=💩 texthl=semshiErrorSign
@@ -456,29 +475,37 @@ function! s:dump_syntax()
 endfunction
 
 nnoremap <leader>? :echo <SID>dump_syntax()<CR>
+" }}}
 
-"" NERDTree
+"" NERDTree {{{
 map <leader>m :NERDTreeToggle<cr>
+" }}}
 
-"" Ruby
+"" Ruby {{{
 au BufRead,BufNewFile {Gemfile,Vagrantfile,Berksfile} set ft=ruby
 " TODO: ruby syntax highlighting fix
+" }}}
 
-"" JavaScript
+"" JavaScript {{{
 au BufRead,BufNewFile {.babelrc} set ft=json
 let g:javascript_plugin_jsdoc = 1
+" }}}
 
 
-"" Python
+"" Python {{{
 " let g:python_highlight_all = 1
 let g:semshi#no_default_builtin_highlight = v:false
 let g:semshi#simplify_markup = v:true
+" Always want to fold by indent in python
+autocmd FileType python   set foldmethod=indent
+" }}}
 
 
-"" Fortran
+"" Fortran {{{
 let fortran_free_source=1
+" }}}
 
-"" UltiSnips
+"" UltiSnips {{{
 nnoremap <leader>u :UltiSnipsEdit<cr>
 let g:UltiSnipsEditSplit = "vertical"
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
@@ -489,9 +516,10 @@ augroup ultisnips_no_auto_expansion
     au!
     au VimEnter * au! UltiSnips_AutoTrigger
 augroup END
+" }}}
 
 
-"" deoplete
+"" deoplete {{{
 let g:deoplete#enable_at_startup = 1
 " keep ultisnips on top
 call deoplete#custom#source('ultisnips', 'rank', 1000)
@@ -518,21 +546,21 @@ function! s:check_back_space() abort "{{{
 let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
+" }}}
 
 
-"" Fugitive
+"" Fugitive {{{
 " Don't keep fugitive buffers open after hiding them
 au BufReadPost fugitive://* set bufhidden=delete
+" }}}
 
-" CSS/SCSS
+" CSS/SCSS {{{
 au! FileType vue,html,css,scss,less setl iskeyword+=-
 
 let g:vue_disable_pre_processors=1
+" }}}
 
-" let g:airline_powerline_fonts = 1
-"
-"
-" CRYSTALLINE
+" CRYSTALLINE {{{
 
 function! StatusLine(current, width)
   let l:s = ''
@@ -597,3 +625,4 @@ set showtabline=1
 set guioptions-=e
 set laststatus=2
 set lazyredraw
+" }}}
