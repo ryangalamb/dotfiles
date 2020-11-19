@@ -60,7 +60,7 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'leafgarland/typescript-vim'
 
 "" ngnix
-"Plug 'chr4/nginx.vim'
+Plug 'chr4/nginx.vim'
 
 "" Scala
 "Plug 'derekwyatt/vim-scala'
