@@ -478,7 +478,7 @@ nnoremap <leader>? :echo <SID>dump_syntax()<CR>
 " }}}
 
 "" NERDTree {{{
-map <leader>m :NERDTreeToggle<cr>
+nnoremap <leader>m :NERDTreeToggle<cr>
 " }}}
 
 "" Ruby {{{
