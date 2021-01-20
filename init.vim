@@ -47,7 +47,8 @@ Plug 'sophacles/vim-bundle-mako'
 
 "" Python
 " Plug 'vim-python/python-syntax'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'blueyed/semshi', {'do': ':UpdateRemotePlugins', 'branch': 'rm-mark_selected-from-_update_step'}
 Plug 'vim-scripts/indentpython.vim'
 
 "" Handlebars
@@ -247,7 +248,7 @@ fun! s:HL(group, fg, bg, attr)
   endif
 endfun
 
-" COLORS {{{
+" Color definitions {{{
 let s:bold = "bold"
 let s:italic = "italic"
 let s:underline = "underline"
@@ -413,6 +414,26 @@ autocmd ColorScheme * highlight jsThis ctermfg=148 guifg=#afd700
 
 colorscheme PaperColor
 " colorscheme SerialExperimentsLain
+
+"" :terminal colors {{{
+" Need to set the terminal colors explicitly
+let g:terminal_color_0 = '#000000'
+let g:terminal_color_8 = '#767676'
+let g:terminal_color_1 = '#ee2a29'
+let g:terminal_color_9 = '#dc5b60'
+let g:terminal_color_2 = '#3fa33f'
+let g:terminal_color_10 = '#70be71'
+let g:terminal_color_3 = '#fee92e'
+let g:terminal_color_11 = '#fef063'
+let g:terminal_color_4 = '#1d80ef'
+let g:terminal_color_12 = '#53a4f3'
+let g:terminal_color_5 = '#8800a0'
+let g:terminal_color_13 = '#a94dbb'
+let g:terminal_color_6 = '#16aec9'
+let g:terminal_color_14 = '#42c6d9'
+let g:terminal_color_7 = '#a4a4a4'
+let g:terminal_color_15 = '#fffefe'
+"" }}}
 
 function! HandleSemshiHighlights()
   call s:HL("pythonStatement", s:color09, "", "")
