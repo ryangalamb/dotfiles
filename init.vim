@@ -47,9 +47,12 @@ Plug 'sophacles/vim-bundle-mako'
 
 "" Python
 " Plug 'vim-python/python-syntax'
+" Plug 'rjmill/semshi', {'do': ':UpdateRemotePlugins'}
 " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'blueyed/semshi', {'do': ':UpdateRemotePlugins', 'branch': 'rm-mark_selected-from-_update_step'}
-Plug 'vim-scripts/indentpython.vim'
+" Plug 'vim-scripts/indentpython.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
+
+Plug 'cespare/vim-toml'
 
 "" Handlebars
 "Plug 'mustache/vim-mustache-handlebars'
@@ -81,13 +84,15 @@ Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 "" }}}
 
+set rtp+=$HOME/Development/open-source/semshi
+
 "" Basics {{{
 filetype on
 syntax on
 let mapleader = "\<space>"
 "" }}}
 
-"" Tab Settings {{{
+"" Indentation Settings {{{
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -96,6 +101,10 @@ set smarttab
 set shiftround
 set autoindent
 set smartindent
+
+nnoremap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>: set softtabstop=2<cr>
+nnoremap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>: set softtabstop=4<cr>
+
 "" }}}
 
 "" Backup Settings {{{
