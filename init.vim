@@ -448,7 +448,7 @@ function! HandleSemshiHighlights()
   call s:HL("pythonStatement", s:color09, "", "")
 
 " call s:HL("semshiLocal", s:TODO, "", "")
-  call s:HL("semshiGlobal", s:color10, "", "")
+  call s:HL("semshiGlobal", s:color10, "", "nocombine")
   call s:HL("semshiImported", s:color10, "", s:bold)
 
   call s:HL("semshiParameter", s:color04, "", "")
