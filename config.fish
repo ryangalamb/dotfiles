@@ -39,9 +39,9 @@ end
 
 set PATH "$HOME"/bin $PATH
 
-which vim > /dev/null && set EDITOR vim
+which vim > /dev/null; and set EDITOR vim
 # Prefer nvim if it's around
-which nvim > /dev/null && set EDITOR nvim
+which nvim > /dev/null; and set EDITOR nvim
 
 
 function cdn
