@@ -81,6 +81,13 @@ Plug 'nathanalderson/yang.vim'
 "" C++
 Plug 'bfrg/vim-cpp-modern'
 
+"" Bazel
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
+
+"" Fish
+Plug 'dag/vim-fish'
+
 call plug#end()
 "" }}}
 
@@ -235,6 +242,7 @@ nnoremap <leader><leader> <c-^>
 
 "" Registers and Macros {{{
 nnoremap Q @q
+vnoremap Q @q
 " }}}
 
 "" Display {{{

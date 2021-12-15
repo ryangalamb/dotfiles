@@ -1,3 +1,5 @@
+fpath=($HOME/.zsh-completions $fpath)
+
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -24,6 +26,15 @@ export KEYTIMEOUT=10
 ## COMPLETION
 # automatically find new executables in the $PATH
 zstyle ':completion:*' rehash true
+
+# start: https://web.archive.org/web/20190411104837/http://www.linux-mag.com/id/1106/
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
+# end: https://web.archive.org/web/20190411104837/http://www.linux-mag.com/id/1106/
+
 # show current auto selection
 #zstyle ':completion:*' menu yes select
 
