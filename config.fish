@@ -39,6 +39,10 @@ end
 
 set PATH "$HOME"/bin $PATH
 
+which vim > /dev/null && set EDITOR vim
+# Prefer nvim if it's around
+which nvim > /dev/null && set EDITOR nvim
+
 
 function cdn
   nvr --remote-expr 'execute("pwd")' | tr --delete '\n' | read -l new_dir
