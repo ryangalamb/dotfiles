@@ -37,11 +37,11 @@ if status is-interactive
     alias ta='tmux attach'
 end
 
-set PATH "$HOME"/bin $PATH
+set --export PATH "$HOME"/bin $PATH
 
-which vim > /dev/null; and set EDITOR vim
+which vim > /dev/null; and set --export EDITOR vim
 # Prefer nvim if it's around
-which nvim > /dev/null; and set EDITOR nvim
+which nvim > /dev/null; and set --export EDITOR nvim
 
 
 function cdn
