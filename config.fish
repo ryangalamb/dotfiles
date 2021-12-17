@@ -17,7 +17,8 @@ if status is-interactive
 
     # source: https://github.com/fish-shell/fish-shell/issues/2271#issuecomment-352210807
     function reverse_history_search
-      history | fzf --no-sort --exact | read -l command
+      # Delimit with NUL to handle multiline commands correctly
+      history --null | fzf --read0 --no-sort --exact | read -l command
       if test $command
         # Put command into the command line.
         commandline -rb $command
